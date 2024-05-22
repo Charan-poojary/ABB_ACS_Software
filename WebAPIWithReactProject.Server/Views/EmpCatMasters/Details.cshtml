@@ -1,0 +1,54 @@
+﻿@model WebAPIWithReactProject.Server.Models.EmpCatMaster
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>EmpCatMaster</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Catname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Catname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dates)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dates)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Empid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Empid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Days)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Days)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Months)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Months)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Years)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Years)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Srno">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

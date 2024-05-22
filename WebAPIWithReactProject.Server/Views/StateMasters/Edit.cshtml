@@ -1,0 +1,74 @@
+﻿@model WebAPIWithReactProject.Server.Models.StateMaster
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>StateMaster</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Srno" />
+            <div class="form-group">
+                <label asp-for="Statename" class="control-label"></label>
+                <input asp-for="Statename" class="form-control" />
+                <span asp-validation-for="Statename" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Details" class="control-label"></label>
+                <input asp-for="Details" class="form-control" />
+                <span asp-validation-for="Details" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Flag" class="control-label"></label>
+                <input asp-for="Flag" class="form-control" />
+                <span asp-validation-for="Flag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phno" class="control-label"></label>
+                <input asp-for="Phno" class="form-control" />
+                <span asp-validation-for="Phno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Emailid" class="control-label"></label>
+                <input asp-for="Emailid" class="form-control" />
+                <span asp-validation-for="Emailid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Finstartyear" class="control-label"></label>
+                <input asp-for="Finstartyear" class="form-control" />
+                <span asp-validation-for="Finstartyear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Finendyear" class="control-label"></label>
+                <input asp-for="Finendyear" class="form-control" />
+                <span asp-validation-for="Finendyear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usedflag" class="control-label"></label>
+                <input asp-for="Usedflag" class="form-control" />
+                <span asp-validation-for="Usedflag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Logo" class="control-label"></label>
+                <input asp-for="Logo" class="form-control" />
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
