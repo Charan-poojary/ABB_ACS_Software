@@ -29,43 +29,47 @@ namespace WebAPIWithReactProject.Server.Controllers
 
 
         // POST: api/EmployeeCategory/CheckEmployeeCategory/{}
-/*
-        [HttpGet("CheckEmployeeCategory/{catname}")]
+
+/*        [HttpGet("CheckEmployeeCategory/{catname}")]
         public async Task<IActionResult> CheckEmployeeCategory(string catname)
         {
             var exists = await _context.EmpCatMasters.AnyAsync(cm => cm.Catname == catname);
             return Ok(new { exists });
-        }
-*/
+        }*/
 
-        // POST: api/EmployeeCategory
 
-/*        [HttpPost]
-        public async Task<ActionResult<EmpCatMaster>> PostEmployeeCategory(EmpCatMaster des)
+        // POST: api/Employees
+
+        [HttpPost]
+        public async Task<ActionResult<Employee>> PostEmployees(Employee des)
         {
-            // Check if a Category with the same name already exists
+            // Check if a Employee with the same name already exists
 
-            if (_context.EmpCatMasters.Any(c => c.Catname == des.Catname))
+            if (_context.Employees.Any(c => c.Fname == des.Fname))
             {
-                return Conflict(new { message = $"A location with the name '{des.Catname}' already exists." });
+                return Conflict(new { message = $"A Employee with the name '{des.Fname}' already exists." });
             }
 
-            var newEmployeeCategoryMaster = new EmpCatMaster
+            var newEmployeeMaster = new Employee
             {
-                Catname = des.Catname,
+                Empcode = des.Empcode,
+                Fname = des.Fname,
+                Lname = des.Lname,
+                Cardno = des.Cardno,
+                Pin=des.Pin,
 
             };
 
-            _context.EmpCatMasters.Add(newEmployeeCategoryMaster);
+            _context.Employees.Add(newEmployeeMaster);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEmployeeCategory", new { id = newEmployeeCategoryMaster.Srno }, newEmployeeCategoryMaster);
-        }*/
+            return CreatedAtAction("GetEmployees", new { id = newEmployeeMaster.Srno }, newEmployeeMaster);
+        }
 
-        // PUT: api/EmployeeCategory/5
+        // PUT: api/Employees/5
 
-/*        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployeeCategory(int id, EmpCatMaster des)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutEmployees(int id, Employee des)
         {
             if (id != des.Srno)
             {
@@ -80,7 +84,7 @@ namespace WebAPIWithReactProject.Server.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmployeeCategoryExists(id))
+                if (!EmployeesExists(id))
                 {
                     return NotFound();
                 }
@@ -91,12 +95,37 @@ namespace WebAPIWithReactProject.Server.Controllers
             }
 
             return NoContent();
-        }*/
+        }
 
-/*
-        private bool EmployeeCategoryExists(int id)
+        // Search: api/Employees/Search
+        [HttpGet("Search")]
+        public async Task<ActionResult<IEnumerable<Employee>>> SearchEmployees(string empcode = "", string fname = "", string cardno = "")
         {
-            return _context.EmpCatMasters.Any(e => e.Srno == id);
-        }*/
+            var query = _context.Employees.AsQueryable();
+
+            if (!string.IsNullOrEmpty(empcode))
+            {
+                query = query.Where(e => e.Empcode.Contains(empcode));
+            }
+
+            if (!string.IsNullOrEmpty(fname))
+            {
+                query = query.Where(e => e.Fname.Contains(fname));
+            }
+
+            if (!string.IsNullOrEmpty(cardno))
+            {
+                query = query.Where(e => e.Cardno.Contains(cardno));
+            }
+
+            return await query.ToListAsync();
+        }
+
+
+
+        private bool EmployeesExists(int id)
+        {
+            return _context.Employees.Any(e => e.Srno == id);
+        }
     }
 }

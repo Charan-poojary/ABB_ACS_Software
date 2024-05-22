@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../../../assets/styles/fetchEmployee.css';
 import '../../../assets/styles/Login.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTrash, faSync, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSync, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const EmployeeMaster = () => {
     const [EmployeeMasters, setEmployeeMasters] = useState([]);
@@ -12,7 +12,7 @@ const EmployeeMaster = () => {
         fname: '',
         lname: '',
         cardno: '',
-        pin:'',
+        pin: '',
     });
     const [newEmployeeMaster, setNewEmployeeMaster] = useState({
         srno: '',
@@ -21,6 +21,11 @@ const EmployeeMaster = () => {
         lname: '',
         cardno: '',
         pin: '',
+    });
+    const [searchParams, setSearchParams] = useState({
+        empcode: '',
+        name: '',
+        cardno: '',
     });
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
@@ -58,55 +63,41 @@ const EmployeeMaster = () => {
         }
     };
 
-
-
     const handleAddClick = async () => {
-
-        if (!newEmployeeMaster.empcode || !newEmployeeMaster.Fname || !newEmployeeMaster.Lname || !newEmployeeMaster.cardno) {
+        if (!newEmployeeMaster.empcode || !newEmployeeMaster.fname || !newEmployeeMaster.lname || !newEmployeeMaster.cardno) {
             setError("Fields cannot be empty");
             return;
         }
 
         try {
-            // Check if location exists
-/*            const checkResponse = await fetch(`http://localhost:5213/api/Employee/CheckEmployeeCategory/${newEmployeeCategoryMaster.catname}`);
-            if (!checkResponse.ok) {
+            const response = await fetch('http://localhost:5213/api/Employees', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    empcode: newEmployeeMaster.empcode,
+                    fname: newEmployeeMaster.fname,
+                    lname: newEmployeeMaster.lname,
+                    cardno: newEmployeeMaster.cardno,
+                    pin: newEmployeeMaster.pin,
+                }),
+            });
+
+            if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            const checkData = await checkResponse.json();
-            if (checkData.exists) {
-                setError('Category already exists.');
-                return;
-            }
-            else {*/
-                const response = await fetch('http://localhost:5213/api/Employees', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        empcode: newEmployeeMaster.empcode,
-                        fname: newEmployeeMaster.Fname,
-                        lname: newEmployeeMaster.Lname,
-                        cardno: newEmployeeMaster.cardno,
-                        pin: newEmployeeMaster.pin,
-                    }),
-                });
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
+            setSuccessMessage('New Employee Entry added successfully');
+            setNewEmployeeMaster({
+                srno: '',
+                empcode: '',
+                fname: '',
+                lname: '',
+                cardno: '',
+                pin: '',
+            });
 
-                setSuccessMessage('New Employee Entry added successfully');
-                setNewEmployeeMaster({
-                    srno: '',
-                    empcode: '',
-                    fname: '',
-                    lname: '',
-                    cardno: '',
-                    pin: '',
-                });
-       /*     }*/
             setTimeout(() => {
                 const addModalElement1 = document.getElementById('addModal');
                 const addModalInstance1 = bootstrap.Modal.getInstance(addModalElement1);
@@ -162,53 +153,41 @@ const EmployeeMaster = () => {
     };
 
     const handleSave = async () => {
-        if (!editedEmployeeMaster.empcode || !editedEmployeeMaster.Fname || !editedEmployeeMaster.Lname || !editedEmployeeMaster.cardno) {
+        if (!editedEmployeeMaster.empcode || !editedEmployeeMaster.fname || !editedEmployeeMaster.lname || !editedEmployeeMaster.cardno) {
             setError("Fields cannot be empty");
             return;
         }
 
         try {
-/*            const checkResponse = await fetch(`http://localhost:5213/api/EmployeeCategory/CheckEmployeeCategory/${editedEmployeeCategoryMaster.catname}`);
-            if (!checkResponse.ok) {
+            const response = await fetch(`http://localhost:5213/api/Employees/${editedEmployeeMaster.srno}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    srno: editedEmployeeMaster.srno,
+                    empcode: editedEmployeeMaster.empcode,
+                    fname: editedEmployeeMaster.fname,
+                    lname: editedEmployeeMaster.lname,
+                    cardno: editedEmployeeMaster.cardno,
+                    pin: editedEmployeeMaster.pin,
+                }),
+            });
+
+            if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            const checkData = await checkResponse.json();
-            if (checkData.exists) {
-                setError('Category already exists.');
-                return;
 
-            }
-            else {*/
+            setSuccessMessage('Data updated successfully');
+            setEditedEmployeeMaster({
+                srno: '',
+                empcode: '',
+                fname: '',
+                lname: '',
+                cardno: '',
+                pin: '',
+            });
 
-            const response = await fetch(`http://localhost:5213/api/Employees/${editedEmployeeMaster.srno}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        srno: editedEmployeeMaster.srno,
-                        empcode: editedEmployeeMaster.empcode,
-                        fname: editedEmployeeMaster.Fname,
-                        lname: editedEmployeeMaster.Lname,
-                        cardno: editedEmployeeMaster.cardno,
-                        pin: editedEmployeeMaster.pin,
-                    }),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                setSuccessMessage('Data updated successfully');
-                setEditedEmployeeMaster({
-                    srno: '',
-                    empcode: '',
-                    fname: '',
-                    lname: '',
-                    cardno: '',
-                    pin: '',
-                });
-/*            }*/
             setTimeout(() => {
                 const editModalElement1 = document.getElementById('editModal');
                 const editModalInstance1 = bootstrap.Modal.getInstance(editModalElement1);
@@ -240,13 +219,84 @@ const EmployeeMaster = () => {
             [name]: value
         });
     };
+    const handleNewInputChange = (event) => {
+        const { name, value } = event.target;
+        setNewEmployeeMaster(
+            (prevState) => ({
+                ...prevState,
+                [name]: value,
+            })
+        );
+    };
+
+    const handleSearchInputChange = (event) => {
+        const { name, value } = event.target;
+        setSearchParams(
+            (prevState) => ({
+                ...prevState,
+                [name]: value,
+            })
+        );
+    };
+
+    const handleSearch = async () => {
+        try {
+            setLoading(true);
+            const query = new URLSearchParams(searchParams).toString();
+            const response = await fetch(`http://localhost:5213/api/Employee/Search?${query}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            setEmployeeMasters(data);
+        } catch (error) {
+            console.error('There was a problem with your search operation:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
-        <>
+<>
             <div className="container employeeContainer mt-2 justify-content-center align-items-start">
                 <div className='card'>
                     <h1 className="mb-4 ms-2">Employee Master</h1>
                     <div className='container-fluid mb-4'>
+                        <div className="row mb-4">
+                            <div className="col-md-3 mb-2">
+                                <input
+                                    type="text"
+                                    className="form-control border border-dark"
+                                    placeholder="Empcode"
+                                    name="empcode"
+                                    value={searchParams.empcode}
+                                    onChange={handleSearchInputChange}
+                                />
+                            </div>
+                            <div className="col-md-3 mb-2">
+                                <input
+                                    type="text"
+                                    className="form-control border border-dark"
+                                    placeholder="Name"
+                                    name="name"
+                                    value={searchParams.fname}
+                                    onChange={handleSearchInputChange}
+                                />
+                            </div>
+                            <div className="col-md-3 mb-2">
+                                <input
+                                    type="text"
+                                    className="form-control border border-dark"
+                                    placeholder="Card No"
+                                    name="cardno"
+                                    value={searchParams.cardno}
+                                    onChange={handleSearchInputChange}
+                                />
+                            </div>
+                            <div className="col-md-3 mb-2">
+                                <button className="btn btn-primary" onClick={handleSearch}>Search</button>
+                            </div>
+                        </div>
                         <button className="custom-btn primary"
                             data-bs-toggle="modal" data-bs-target="#addModal"
                         >
@@ -270,39 +320,39 @@ const EmployeeMaster = () => {
                                     <th>Card No</th>
                                     <th>Pin</th>
                                     <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {loading ? (
-                                    <tr>
-                                        <td colSpan="8">
-                                            <div className="loading-container">
-                                                <div className="spinner-border text-primary" role="status">
-                                                    <span className="visually-hidden">Loading...</span>
-                                                </div>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {loading ? (
+                                <tr>
+                                    <td colSpan="8">
+                                        <div className="loading-container">
+                                            <div className="spinner-border text-primary" role="status">
+                                                <span className="visually-hidden">Loading...</span>
                                             </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ) : (
+                                EmployeeMasters.map(EmployeeMaster => (
+                                    <tr key={EmployeeMaster.srno}>
+                                        <td>{EmployeeMaster.empcode}</td>
+                                        <td>{EmployeeMaster.fname} {EmployeeMaster.lname}</td>
+                                        <td>{EmployeeMaster.cardno}</td>
+                                        <td>{EmployeeMaster.pin}</td>
+                                        <td>
+                                            <button className="custom-btn primary" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handleEdit(EmployeeMaster)}>
+                                                <FontAwesomeIcon icon={faEdit} />
+                                            </button>
                                         </td>
                                     </tr>
-                                ) : (
-                                    EmployeeMasters.map(EmployeeMaster => (
-                                        <tr key={EmployeeMaster.srno}>
-                                            <td>{EmployeeMaster.empcode}</td>
-                                            <td>{EmployeeMaster.fname}{EmployeeMaster.lname}</td>
-                                            <td>{EmployeeMaster.cardno}</td>
-                                            <td>{EmployeeMaster.pin}</td>
-                                            <td>
-                                                <button className="custom-btn primary" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handleEdit(EmployeeMaster)}>
-                                                    <FontAwesomeIcon icon={faEdit} />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    ))
-                                )}
-                            </tbody>
-                        </table>
-                    </div>
+                                ))
+                            )}
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div >
 
             {/* Add Modal */}
             <div className="modal fade" id="addModal" tabIndex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
@@ -311,31 +361,64 @@ const EmployeeMaster = () => {
                         {error && <div className="alert alert-danger">{error}</div>}
                         {successMessage && <div className="alert alert-success">{successMessage}</div>}
                         <div className="modal-header">
-                            <h5 className="modal-title" id="addModalLabel">Add Category</h5>
+                            <h5 className="modal-title" id="addModalLabel">Add Employee</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <form>
-                                <div className="mb-3">
-                                    <label htmlFor="catname" className="form-label2">Category Name</label>
-                                    <input
-                                        type="text"
-                                        className="form-control2"
-                                        id="addCatName"
-                                        name="catname"
-                                        value={newEmployeeMaster.catname}
-                                        onChange={handleAddInputChange}
-                                    />
-                                </div>
-                            </form>
+                            <div className="mb-3">
+                                <label className="form-label2">Empcode</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="empcode"
+                                    value={newEmployeeMaster.empcode}
+                                    onChange={handleNewInputChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label2">First Name</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="fname"
+                                    value={newEmployeeMaster.fname}
+                                    onChange={handleNewInputChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label2">Last Name</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="lname"
+                                    value={newEmployeeMaster.lname}
+                                    onChange={handleNewInputChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label2">Cardno</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="cardno"
+                                    value={newEmployeeMaster.cardno}
+                                    onChange={handleNewInputChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label2">Pin</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="pin"
+                                    value={newEmployeeMaster.pin}
+                                    onChange={handleNewInputChange}
+                                />
+                            </div>
                         </div>
                         <div className="modal-footer">
-                            <div className="cancelBtn">
-                                <button type="button" onClick={handleCancel}>Cancel</button>
-                            </div>
-                            <div className="btn">
-                                <button type="submit" onClick={handleAddClick}>Save</button>
-                            </div>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary" onClick={handleAddClick}>Save</button>
                         </div>
                     </div>
                 </div>
@@ -348,36 +431,69 @@ const EmployeeMaster = () => {
                         {error && <div className="alert alert-danger">{error}</div>}
                         {successMessage && <div className="alert alert-success">{successMessage}</div>}
                         <div className="modal-header">
-                            <h5 className="modal-title" id="editModalLabel">Edit Village</h5>
+                            <h5 className="modal-title" id="editModalLabel">Edit Employee</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <form>
-                                <div className="mb-3">
-                                    <label htmlFor="catname" className="form-label2">Category Name</label>
-                                    <input
-                                        type="text"
-                                        className="form-control2"
-                                        id="editCatName"
-                                        name="catname"
-                                        value={editedEmployeeMaster.catname}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                            </form>
+                            <div className="mb-3">
+                                <label className="form-label2">Empcode</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="empcode"
+                                    value={editedEmployeeMaster.empcode}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label2">First Name</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="fname"
+                                    value={editedEmployeeMaster.fname}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label2">Last Name</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="lname"
+                                    value={editedEmployeeMaster.lname}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label2">Cardno</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="cardno"
+                                    value={editedEmployeeMaster.cardno}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label2">Pin</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="pin"
+                                    value={editedEmployeeMaster.pin}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
                         </div>
                         <div className="modal-footer">
-                            <div className="cancelBtn">
-                                <button type="button" onClick={handleCancel}>Cancel</button>
-                            </div>
-                            <div className="btn">
-                                <button type="submit" onClick={handleSave}>Save changes</button>
-                            </div>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary" onClick={handleSave}>Save</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+       </>
     );
 };
 
