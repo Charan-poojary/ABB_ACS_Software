@@ -1,0 +1,51 @@
+.container .controllerContainer {
+    display: flex;
+    height: auto;
+    width: 80%; /* Increased width for larger display */
+    max-width: 1200px; /* Max width for larger screens */
+    justify-content: center;
+    align-items: start;
+    background-color: #fff;
+    margin: 0 auto; /* Center the container */
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.container .controllerContainer .card {
+    height: auto;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius: 10px;
+    padding: 20px; /* Add padding for better spacing */
+}
+
+@media (max-width: 1200px) {
+    .container .controllerContainer {
+        width: 90%;
+    }
+}
+
+@media (max-width: 992px) {
+    .container .controllerContainer {
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container .controllerContainer {
+        width: 100%;
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+}
+
+.sidebar {
+    width: 300px;
+    min-width: 100px;
+}

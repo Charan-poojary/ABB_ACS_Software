@@ -13,6 +13,7 @@ import DistrictMaster from './DistrictMaster';
 import VillageMaster from './VillageMaster';
 import EmployeeCatagoryMaster from './EmployeeCatagoryMaster';
 import EmployeeMaster from './Employee/EmployeeMaster';
+import ControllerReader from './CardControllerData/ControllerReader';
 
 
 const MasterData = () => {
@@ -195,7 +196,7 @@ const MasterData = () => {
                                     {selectedLink === 'link8' && <DistrictMaster />}
                                     {selectedLink === 'link9' && <VillageMaster />}
                                     {selectedLink === 'link10' && <EmployeeCatagoryMaster />}
-                                    {selectedLink === 'link11' && <CompanyMaster />}
+                                    {selectedLink === 'link11' && <ControllerReader />}
                                     {selectedLink === 'link12' && <LocationMaster />}
                                     {selectedLink === 'link13' && <DepartmentMaster />}
                                     {selectedLink === 'link14' && <SubDepartmentMaster />}

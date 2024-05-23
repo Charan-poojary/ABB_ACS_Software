@@ -54,7 +54,6 @@ namespace WebAPIWithReactProject.Server.Controllers
             {
                 Empcode = des.Empcode,
                 Fname = des.Fname,
-                Lname = des.Lname,
                 Cardno = des.Cardno,
                 Pin=des.Pin,
 

@@ -8,13 +8,13 @@ const LocationMaster = () => {
     const [locationMasters, setlocationMasters] = useState([]);
     const [selectedRows, setSelectedRows] = useState([]);
     const [editedLocationMaster, setEditedLocationMaster] = useState({
-        srNo: '',
-        location1: '',
+        srno: '',
+        locationid: '',
         details: '',
     });
     const [newLocationMaster, setNewLocationMaster] = useState({
-        srNo: '',
-        location1: '',
+        srno: '',
+        locationid: '',
         details: '',
     });
     const [error, setError] = useState('');
@@ -63,14 +63,14 @@ const LocationMaster = () => {
 
     const handleAddClick = async () => {
 
-        if (!newLocationMaster.location1) {
+        if (!newLocationMaster.locationid) {
             setError("Fields cannot be empty");
             return;
         }
 
         try {
             // Check if location exists
-            const checkResponse = await fetch(`http://localhost:5213/api/Locations/CheckLocations/${newLocationMaster.location1}`);
+            const checkResponse = await fetch(`http://localhost:5213/api/Locations/CheckLocations/${newLocationMaster.locationid}`);
             if (!checkResponse.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -88,7 +88,7 @@ const LocationMaster = () => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        location1: newLocationMaster.location1,
+                        locationid: newLocationMaster.locationid,
                         details: newLocationMaster.details,
                     }),
                 });
@@ -99,8 +99,8 @@ const LocationMaster = () => {
 
                 setSuccessMessage('New Location added successfully');
                 setNewLocationMaster({
-                    srNo: '',
-                    location1: '',
+                    srno: '',
+                    locationid: '',
                     details: '',
                 });
             }
@@ -121,14 +121,14 @@ const LocationMaster = () => {
 
     const handleCancel = async () => {
         setEditedLocationMaster({
-            srNo: '',
-            location1: '',
+            srno: '',
+            locationid: '',
             details: '',
         });
 
         setNewLocationMaster({
-            srNo: '',
-            location1: '',
+            srno: '',
+            locationid: '',
             details: '',
         });
 
@@ -153,7 +153,7 @@ const LocationMaster = () => {
     };
 
     const handleSave = async () => {
-        if (!editedLocationMaster.location1) {
+        if (!editedLocationMaster.locationid) {
             setError("Fields cannot be empty");
             return;
         }
@@ -161,7 +161,7 @@ const LocationMaster = () => {
         try {
 
             // Check if location exists
-            const checkResponse = await fetch(`http://localhost:5213/api/Locations/CheckLocations/${editedLocationMaster.location1}`);
+            const checkResponse = await fetch(`http://localhost:5213/api/Locations/CheckLocations/${editedLocationMaster.locationid}`);
             if (!checkResponse.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -172,14 +172,14 @@ const LocationMaster = () => {
 
             }
             else {
-                const response = await fetch(`http://localhost:5213/api/Locations/${editedLocationMaster.srNo}`, {
+                const response = await fetch(`http://localhost:5213/api/Locations/${editedLocationMaster.srno}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        srNo: editedLocationMaster.srNo,
-                        location1: editedLocationMaster.location1,
+                        srno: editedLocationMaster.srno,
+                        locationid: editedLocationMaster.locationid,
                         details: editedLocationMaster.details,
                     }),
                 });
@@ -190,8 +190,8 @@ const LocationMaster = () => {
 
                 setSuccessMessage('Data updated successfully');
                 setEditedLocationMaster({
-                    srNo: '',
-                    location1: '',
+                    srno: '',
+                    locationid: '',
                     details: ''
                 });
             }
@@ -333,22 +333,22 @@ const LocationMaster = () => {
                                         </tr>
                                     ) : (
                                         locationMasters.map(locationMaster => (
-                                            <tr key={locationMaster.srNo}>
+                                            <tr key={locationMaster.srno}>
                                                 <td>
                                                     <input
                                                         type="checkbox"
-                                                        onChange={() => handleCheckboxChange(locationMaster.srNo)}
-                                                        checked={selectedRows.includes(locationMaster.srNo)}
+                                                        onChange={() => handleCheckboxChange(locationMaster.srno)}
+                                                        checked={selectedRows.includes(locationMaster.srno)}
                                                     />
                                                 </td>
-                                                <td>{locationMaster.location1}</td>
+                                                <td>{locationMaster.locationid}</td>
                                                 <td>
                                                     <button className="custom-btn primary" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handleEdit(locationMaster)}>
                                                         <FontAwesomeIcon icon={faEdit} />
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <button className="custom-btn danger" onClick={() => handleDeleteConfirmation(locationMaster.srNo)}>
+                                                    <button className="custom-btn danger" onClick={() => handleDeleteConfirmation(locationMaster.srno)}>
                                                         <FontAwesomeIcon icon={faTrash} />
                                                     </button>
                                                 </td>
@@ -374,13 +374,13 @@ const LocationMaster = () => {
                             <div className="modal-body">
                                 <form>
                                     <div className="mb-3">
-                                        <label htmlFor="location1" className="form-label2">Location</label>
+                                        <label htmlFor="locationid" className="form-label2">Location</label>
                                         <input
                                             type="text"
                                             className="form-control2"
-                                            id="addLocation1"
-                                            name="location1"
-                                            value={newLocationMaster.location1}
+                                            id="addLocationId"
+                                            name="locationid"
+                                            value={newLocationMaster.locationid}
                                             onChange={handleAddInputChange}
                                         />
                                     </div>
@@ -411,13 +411,13 @@ const LocationMaster = () => {
                             <div className="modal-body">
                                 <form>
                                     <div className="mb-3">
-                                        <label htmlFor="editLocation" className="form-label2">Location</label>
+                                        <label htmlFor="locationid" className="form-label2">Location</label>
                                         <input
                                             type="text"
                                             className="form-control2"
-                                            id="editLocation1"
-                                            name="location1"
-                                            value={editedLocationMaster.location1}
+                                            id="editLocationId"
+                                            name="locationid"
+                                            value={editedLocationMaster.locationid}
                                             onChange={handleInputChange}
                                         />
                                     </div>

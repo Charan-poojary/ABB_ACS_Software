@@ -20,54 +20,54 @@ namespace WebAPIWithReactProject.Server.Controllers
             _context = new BpclWarangalAuditDbContext();
         }
 
-        // GET: api/Locations
+        // GET: api/LocationMasters
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Location>>> GetLocations()
+        public async Task<ActionResult<IEnumerable<LocationMaster>>> GetLocations()
         {
-            return await _context.Locations.ToListAsync();
+            return await _context.LocationMasters.ToListAsync();
         }
 
 
-        // POST: api/Locations/CheckLocations/{location}
+        // POST: api/LocationMasters/CheckLocations/{location}
 
-        [HttpGet("CheckLocations/{location1}")]
-        public async Task<IActionResult> CheckLocations(string location1)
+        [HttpGet("CheckLocations/{locationid}")]
+        public async Task<IActionResult> CheckLocations(string locationid)
         {
-            var exists = await _context.Locations.AnyAsync(cm => cm.Location1 == location1);
+            var exists = await _context.LocationMasters.AnyAsync(cm => cm.Locationid == locationid);
             return Ok(new { exists });
         }
 
-        // POST: api/Locations
+        // POST: api/LocationMasters
 
         [HttpPost]
-        public async Task<ActionResult<Location>> PostLocations(Location loc)
+        public async Task<ActionResult<LocationMaster>> PostLocations(LocationMaster loc)
         {
             // Check if a Locations with the same name already exists
 
-            if (_context.Locations.Any(c => c.Location1 == loc.Location1))
+            if (_context.LocationMasters.Any(c => c.Locationid == loc.Locationid))
             {
-                return Conflict(new { message = $"A location with the name '{loc.Location1}' already exists." });
+                return Conflict(new { message = $"A location with the name '{loc.Locationid}' already exists." });
             }
 
-            var newLocationMaster = new Location
+            var newLocationMaster = new LocationMaster
             {
-                Location1 = loc.Location1,
+                Locationid = loc.Locationid,
                 Details = loc.Details,
 
             };
 
-            _context.Locations.Add(newLocationMaster);
+            _context.LocationMasters.Add(newLocationMaster);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetLocations", new { id = newLocationMaster.SrNo }, newLocationMaster);
+            return CreatedAtAction("GetLocations", new { id = newLocationMaster.Srno}, newLocationMaster);
         }
 
-        // PUT: api/Locations/5
+        // PUT: api/LocationMasters/5
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutLocations(int id, Location loc)
+        public async Task<IActionResult> PutLocations(int id, LocationMaster loc)
         {
-            if (id != loc.SrNo)
+            if (id != loc.Srno)
             {
                 return BadRequest();
             }
@@ -93,17 +93,17 @@ namespace WebAPIWithReactProject.Server.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Locations/5
+        // DELETE: api/LocationMasters/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLocations(int id)
         {
-            var locations = await _context.Locations.FindAsync(id);
+            var locations = await _context.LocationMasters.FindAsync(id);
             if (locations == null)
             {
                 return NotFound();
             }
 
-            _context.Locations.Remove(locations);
+            _context.LocationMasters.Remove(locations);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -112,7 +112,7 @@ namespace WebAPIWithReactProject.Server.Controllers
 
         private bool LocationExists(int id)
         {
-            return _context.Locations.Any(e => e.SrNo == id);
+            return _context.LocationMasters.Any(e => e.Srno == id);
         }
     }
 }
