@@ -32,3 +32,6 @@ obj/
 *.suo
 *.userosscache
 *.sln.docstates
+
+# database config info  
+appsettings.json

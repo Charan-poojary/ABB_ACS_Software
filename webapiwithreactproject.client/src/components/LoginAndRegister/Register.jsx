@@ -6,18 +6,18 @@ import '../../assets/styles/Register.css';
 const Register = () => {
     const navigate = useNavigate();
     const [AdminData, setAdminData] = useState({
-        AdminName: '',
-        AdminEmail: '',
-        AdminDepartment: '',
-        AdminPhone: '',
-        AdminPassword: '',
+        uname: '',
+        email: '',
+        dept: '',
+        phno: '',
+        pass: '',
     });
-    const [AdminConfirmPassword, setAdminConfirmPassword] = useState('');
+    const [cpass, setCpass] = useState('');
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
-    const isValidPassword = (AdminPassword) => {
-        return AdminPassword.length >= 8;
+    const isValidPassword = (pass) => {
+        return pass.length >= 8;
     };
 
     const timeoutRef = useRef(null);
@@ -42,28 +42,28 @@ const Register = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const { AdminName, AdminEmail, AdminDepartment, AdminPhone, AdminPassword } = AdminData;
+        const { uname, email, dept, phno, pass } = AdminData;
 
-        if (!AdminName || !AdminEmail || !AdminDepartment || !AdminPhone || !AdminPassword || !AdminConfirmPassword) {
+        if (!uname || !email || !dept || !phno || !pass || !cpass) {
             setError('Fields cannot be empty');
             return;
         }
 
-        if (!isValidPassword(AdminPassword)) {
+        if (!isValidPassword(pass)) {
             setError('Password must contain at least 8 characters.');
             return;
         }
 
-        const isValidPhoneNumber = (AdminPhone) => {
-            return /^\d{10}$/.test(AdminPhone);
+        const isValidPhoneNumber = (phno) => {
+            return /^\d{10}$/.test(phno);
         };
 
-        if (AdminPassword !== AdminConfirmPassword) {
+        if (pass !== cpass) {
             setError('Password did not match');
             return;
         }
 
-        if (!isValidPhoneNumber(AdminPhone)) {
+        if (!isValidPhoneNumber(phno)) {
             setError('Invalid phone number. Please enter a 10-digit numeric phone number.');
             return;
         }
@@ -84,11 +84,11 @@ const Register = () => {
             } else {
                 setSuccessMessage('Registration is Successful!');
                 setAdminData({
-                    AdminName: '',
-                    AdminEmail: '',
-                    AdminDepartment: '',
-                    AdminPhone: '',
-                    AdminPassword: '',
+                    uname: '',
+                    email: '',
+                    dept: '',
+                    phno: '',
+                    pass: '',
                 });
                 navigate('/');
             }
@@ -129,9 +129,9 @@ const Register = () => {
                                     <input
                                         type="text"
                                         className="form-control col-sm-8"
-                                        id="username"
-                                        name="AdminName"
-                                        value={AdminData.AdminName}
+                                        id="uname"
+                                        name="uname"
+                                        value={AdminData.uname}
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -143,60 +143,60 @@ const Register = () => {
                                         type="email"
                                         className="form-control col-sm-8"
                                         id="email"
-                                        name="AdminEmail"
-                                        value={AdminData.AdminEmail}
+                                        name="email"
+                                        value={AdminData.email}
                                         onChange={handleChange}
                                     />
                                 </div>
                                 <div className="input_text">
-                                    <label htmlFor="department" className="form-label">
+                                    <label htmlFor="dept" className="form-label">
                                         Department
                                     </label>
                                     <input
                                         type="department"
                                         className="form-control col-sm-8"
-                                        id="department"
-                                        name="AdminDepartment"
-                                        value={AdminData.AdminDepartment}
+                                        id="dept"
+                                        name="dept"
+                                        value={AdminData.dept}
                                         onChange={handleChange}
                                     />
                                 </div>
                                 <div className="input_text">
-                                    <label htmlFor="phone" className="form-label">
+                                    <label htmlFor="phno" className="form-label">
                                         Phone
                                     </label>
                                     <input
                                         type="number"
                                         className="form-control col-sm-8"
-                                        id="phone"
-                                        name="AdminPhone"
-                                        value={AdminData.AdminPhone}
+                                        id="phno"
+                                        name="phno"
+                                        value={AdminData.phno}
                                         onChange={handleChange}
                                     />
                                 </div>
                                 <div className="input_text">
-                                    <label htmlFor="password" className="form-label">
+                                    <label htmlFor="pass" className="form-label">
                                         Password
                                     </label>
                                     <input
                                         type="password"
                                         className="form-control col-sm-8"
-                                        id="password"
-                                        name="AdminPassword"
-                                        value={AdminData.AdminPassword}
+                                        id="pass"
+                                        name="pass"
+                                        value={AdminData.pass}
                                         onChange={handleChange}
                                     />
                                 </div>
                                 <div className="input_text">
-                                    <label htmlFor="confirmPassword" className="form-label">
+                                    <label htmlFor="cpass" className="form-label">
                                         Confirm Password
                                     </label>
                                     <input
                                         type="password"
                                         className="form-control col-sm-8"
-                                        id="confirmPassword"
-                                        value={AdminConfirmPassword}
-                                        onChange={(e) => setAdminConfirmPassword(e.target.value)}
+                                        id="cpass"
+                                        value={cpass}
+                                        onChange={(e) => setCpass(e.target.value)}
                                     />
                                 </div>
                                 <div className="btn">

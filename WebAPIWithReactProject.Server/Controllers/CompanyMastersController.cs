@@ -14,9 +14,9 @@ namespace WebAPIWithReactProject.Server.Controllers
     {
         private readonly BpclWarangalAuditDbContext _context;
 
-        public CompanyMastersController()
+        public CompanyMastersController(BpclWarangalAuditDbContext context)
         {
-            _context = new BpclWarangalAuditDbContext();
+            _context = context;
         }
 
         // GET: api/CompanyMasters
@@ -41,7 +41,6 @@ namespace WebAPIWithReactProject.Server.Controllers
         }
 
         // POST: api/CompanyMasters/CheckCompanyName/{compname}
-
         [HttpGet("CheckCompanyName/{compname}")]
         public async Task<IActionResult> CheckCompanyName(string compname)
         {
@@ -54,7 +53,6 @@ namespace WebAPIWithReactProject.Server.Controllers
         public async Task<ActionResult<CompanyMaster>> PostCompanyMaster(CompanyMaster companyMaster)
         {
             // Check if a company with the same name already exists
-
             if (_context.CompanyMasters.Any(c => c.Compname == companyMaster.Compname))
             {
                 return Conflict(new { message = $"A company with the name '{companyMaster.Compname}' already exists." });
@@ -119,7 +117,6 @@ namespace WebAPIWithReactProject.Server.Controllers
 
             return NoContent();
         }
-
 
         private bool CompanyMasterExists(int id)
         {

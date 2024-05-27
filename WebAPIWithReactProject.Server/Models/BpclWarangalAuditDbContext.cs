@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebAPIWithReactProject.Server.Models;
 
 public partial class BpclWarangalAuditDbContext : DbContext
 {
-    public BpclWarangalAuditDbContext()
-    {
-    }
-
     public BpclWarangalAuditDbContext(DbContextOptions<BpclWarangalAuditDbContext> options)
         : base(options)
     {
@@ -809,8 +804,9 @@ public partial class BpclWarangalAuditDbContext : DbContext
 
     public virtual DbSet<Zone> Zones { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=DIAMOND\\SQLEXPRESS;Database=BPCL_Warangal_audit_DB;User Id=tasuser;Password=admin123#;TrustServerCertificate=true");
+
+
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

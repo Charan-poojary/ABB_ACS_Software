@@ -15,9 +15,9 @@ namespace WebAPIWithReactProject.Server.Controllers
     {
         private readonly BpclWarangalAuditDbContext _context;
 
-        public EmployeeCategoryController()
+        public EmployeeCategoryController(BpclWarangalAuditDbContext context)
         {
-            _context = new BpclWarangalAuditDbContext();
+            _context = context;
         }
 
         // GET: api/EmployeeCategory

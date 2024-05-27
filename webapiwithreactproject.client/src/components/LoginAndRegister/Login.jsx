@@ -5,8 +5,8 @@ import '../../assets/styles/Login.css'
 
 
 const Login = ({ onLogin }) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [uname, setUsername] = useState('');
+    const [pass, setPassword] = useState('');
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
@@ -24,22 +24,22 @@ const Login = ({ onLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!username || !password) {
+        if (!uname || !pass) {
             setError('Fields cannot be empty');
             return;
         }
         try {
-            const response = await fetch(`http://localhost:5213/api/Admin/by-credentials?usernameOrEmail=${username}&password=${password}`);
+            const response = await fetch(`http://localhost:5213/api/Admin/by-credentials?usernameOrEmail=${uname}&password=${pass}`);
             const data = await response.json();
             if (response.ok) {
                 const loginTime = new Date().toLocaleString();
-                const lastAccessTime = localStorage.getItem('lastAccessTime') || 'First time access';
-                localStorage.setItem('username', username);
+                const lastAccessTime = localStorage.getItem('lastAccessTime') || loginTime;
+                localStorage.setItem('username', uname);
                 localStorage.setItem('loginTime', loginTime);
                 localStorage.setItem('lastAccessTime', lastAccessTime);
 
                 setSuccessMessage('Login Successful!');
-                onLogin({ username, loginTime, lastAccessTime });
+                onLogin({ uname, loginTime, lastAccessTime });
             } else {
                 throw new Error(data.message || 'Invalid User Name or Password');
             }
@@ -76,12 +76,12 @@ const Login = ({ onLogin }) => {
                             <form onSubmit={handleSubmit}>
 
                                 <div className="input_text">
-                                    <label htmlFor="username" className="form-label">Username</label>
-                                    <input type="text" className="form-control col-sm-8" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                                    <label htmlFor="uname" className="form-label">Username</label>
+                                    <input type="text" className="form-control col-sm-8" id="uname" value={uname} onChange={(e) => setUsername(e.target.value)} />
                                 </div>
                                 <div className="input_text">
-                                    <label htmlFor="password" className="form-label">Password</label>
-                                    <input type="password" className="form-control col-sm-8" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                    <label htmlFor="pass" className="form-label">Password</label>
+                                    <input type="password" className="form-control col-sm-8" id="pass" value={pass} onChange={(e) => setPassword(e.target.value)} />
                                 </div>
                                 <div className="recovery">
                                     <p><Link to="/forgot-password">Forgot Password ?</Link></p>

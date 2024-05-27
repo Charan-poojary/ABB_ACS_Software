@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPIWithReactProject.Server.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace WebAPIWithReactProject.Server.Controllers
 {
@@ -13,25 +15,25 @@ namespace WebAPIWithReactProject.Server.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly AdminDbContext _context;
+        private readonly BpclWarangalAuditDbContext _context;
 
-        public AdminController()
+        public AdminController(BpclWarangalAuditDbContext context)
         {
-            _context = new AdminDbContext();
+            _context = context;
         }
 
         // GET: api/Admin
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AdminTable>>> GetAdminTables()
+        public async Task<ActionResult<IEnumerable<Admin>>> GetAdminTables()
         {
-            return await _context.AdminTables.ToListAsync();
+            return await _context.Admins.ToListAsync();
         }
 
         // GET: api/Admin/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AdminTable>> GetAdminTable(int id)
+        public async Task<ActionResult<Admin>> GetAdminTable(int id)
         {
-            var adminTable = await _context.AdminTables.FindAsync(id);
+            var adminTable = await _context.Admins.FindAsync(id);
 
             if (adminTable == null)
             {
@@ -44,10 +46,12 @@ namespace WebAPIWithReactProject.Server.Controllers
         // GET : api/Admin/by-credentials?usernameOrEmail=ram&password=1234
 
         [HttpGet("by-credentials")]
-        public async Task<ActionResult<AdminTable>> GetAdminByCredentials(string usernameOrEmail, string password)
+        public async Task<ActionResult<Admin>> GetAdminByCredentials(string usernameOrEmail, string password)
         {
-            var adminTable = await _context.AdminTables.FirstOrDefaultAsync(a =>
-                (a.AdminName == usernameOrEmail || a.AdminEmail == usernameOrEmail) && a.AdminPassword == password);
+            string hashedPassword = HashPassword(password);
+
+            var adminTable = await _context.Admins.FirstOrDefaultAsync(a =>
+                (a.Uname == usernameOrEmail || a.Email == usernameOrEmail) && a.Pass == hashedPassword);
 
             if (adminTable == null)
             {
@@ -60,29 +64,29 @@ namespace WebAPIWithReactProject.Server.Controllers
         //GET :api/Admin/forgot-password?email=abc@gmail.com
 
         [HttpGet("forgot-password")]
-        public async Task<ActionResult<AdminTable>> ForgotPassword(string email)
+        public async Task<ActionResult<Admin>> ForgotPassword(string email)
         {
-            var admin = await _context.AdminTables.FirstOrDefaultAsync(a => a.AdminEmail == email);
+            var admin = await _context.Admins.FirstOrDefaultAsync(a => a.Email == email);
 
             if (admin == null)
             {
                 return NotFound();
             }
-            return Ok(admin.AdminName);
+            return Ok(admin.Uname);
         }
 
         // GET :api/Admin/get-email?username=adminUser
 
         [HttpGet("get-email")]
-        public async Task<ActionResult<AdminTable>> GetEmail(string username)
+        public async Task<ActionResult<Admin>> GetEmail(string username)
         {
-            var admin = await _context.AdminTables.FirstOrDefaultAsync(a => a.AdminName == username);
+            var admin = await _context.Admins.FirstOrDefaultAsync(a => a.Uname == username);
 
             if (admin == null)
             {
                 return NotFound();
             }
-            return Ok(admin.AdminEmail);
+            return Ok(admin.Email);
         }
 
         //PUT: 
@@ -90,14 +94,14 @@ namespace WebAPIWithReactProject.Server.Controllers
         [HttpPut("change-password")]
         public async Task<IActionResult> ChangePassword(string username, string password)
         {
-            var user = await _context.AdminTables.FirstOrDefaultAsync(a => a.AdminName == username);
+            var user = await _context.Admins.FirstOrDefaultAsync(a => a.Uname == username);
 
             if (user == null)
             {
                 return NotFound();
             }
 
-            user.AdminPassword = password;
+            user.Pass = HashPassword(password);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -105,9 +109,9 @@ namespace WebAPIWithReactProject.Server.Controllers
 
         // PUT: api/Admin/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAdminTable(int id, AdminTable adminTable)
+        public async Task<IActionResult> PutAdminTable(int id, Admin adminTable)
         {
-            if (id != adminTable.AdminId)
+            if (id != adminTable.Srno)
             {
                 return BadRequest();
             }
@@ -136,12 +140,13 @@ namespace WebAPIWithReactProject.Server.Controllers
         // POST:api/Admin
 
         [HttpPost]
-        public async Task<ActionResult<AdminTable>> PostAdminTable(AdminTable adminTable)
+        public async Task<ActionResult<Admin>> PostAdminTable(Admin adminTable)
         {
-            _context.AdminTables.Add(adminTable);
+            adminTable.Pass = HashPassword(adminTable.Pass);
+            _context.Admins.Add(adminTable);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAdminTables", new { id = adminTable.AdminId }, adminTable);
+            return CreatedAtAction("GetAdminTables", new { id = adminTable.Srno }, adminTable);
         }
 
 
@@ -149,13 +154,13 @@ namespace WebAPIWithReactProject.Server.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAdminTable(int id)
         {
-            var adminTable = await _context.AdminTables.FindAsync(id);
+            var adminTable = await _context.Admins.FindAsync(id);
             if (adminTable == null)
             {
                 return NotFound();
             }
 
-            _context.AdminTables.Remove(adminTable);
+            _context.Admins.Remove(adminTable);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -163,7 +168,17 @@ namespace WebAPIWithReactProject.Server.Controllers
 
         private bool AdminTableExists(int id)
         {
-            return _context.AdminTables.Any(e => e.AdminId == id);
+            return _context.Admins.Any(e => e.Srno == id);
+        }
+
+        // Helper method to hash passwords using bcrypt
+        private string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(hashedBytes);
+            }
         }
     }
 }

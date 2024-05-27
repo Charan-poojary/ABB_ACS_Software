@@ -88,9 +88,9 @@ const ForgotPasswordPage = () => {
 
         fetch(`http://localhost:5213/api/Admin/forgot-password?email=${email}`)
             .then(response => response.ok ? response.text() : Promise.reject(response))
-            .then(username => {
-                setUser(username);
-                sendEmail(generatedOtp, username,email);
+            .then(uname => {
+                setUser(uname);
+                sendEmail(generatedOtp, uname,email);
                 setShowEmailInput(false);
                 setOriginalEmail(email);
             })
