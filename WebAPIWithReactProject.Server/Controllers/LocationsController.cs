@@ -28,6 +28,20 @@ namespace WebAPIWithReactProject.Server.Controllers
         }
 
 
+        // GET: api/Locations/Name/{id}
+        [HttpGet("Name/{id}")]
+        public async Task<ActionResult<string>> GetLocationName(int id)
+        {
+            var location = await _context.LocationMasters.FindAsync(id);
+
+            if (location == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(location.Locationid); 
+        }
+
         // POST: api/LocationMasters/CheckLocations/{location}
 
         [HttpGet("CheckLocations/{locationid}")]

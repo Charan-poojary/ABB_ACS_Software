@@ -9,11 +9,11 @@ const DepartmentMaster = () => {
     const [selectedRows, setSelectedRows] = useState([]);
     const [editedDepartmentMaster, setEditedDepartmentMaster] = useState({
         srNo: '',
-        deptname: '',
+        deptName: '',
     });
     const [newDepartmentMaster, setNewDepartmentMaster] = useState({
         srNo: '',
-        deptname: '',
+        deptName: '',
     });
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
@@ -61,7 +61,7 @@ const DepartmentMaster = () => {
     const handleAddClick = async () => {
 
 
-        if (!newDepartmentMaster.deptname) {
+        if (!newDepartmentMaster.deptName) {
             setError("Fields cannot be empty");
             return;
         }
@@ -69,7 +69,7 @@ const DepartmentMaster = () => {
         try {
 
             // Check if department exists
-            const checkResponse = await fetch(`http://localhost:5213/api/Departments/CheckDepartments/${newDepartmentMaster.deptname}`);
+            const checkResponse = await fetch(`http://localhost:5213/api/Departments/CheckDepartments/${newDepartmentMaster.deptName}`);
             if (!checkResponse.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -85,7 +85,7 @@ const DepartmentMaster = () => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        Deptname: newDepartmentMaster.deptname,
+                        deptName: newDepartmentMaster.deptName,
                     }),
                 });
 
@@ -96,7 +96,7 @@ const DepartmentMaster = () => {
                 setSuccessMessage('New Department added successfully');
                 setNewDepartmentMaster({
                     srNo: '',
-                    deptname: ''
+                    deptName: '',
                 });
             }
             setTimeout(() => {
@@ -118,12 +118,12 @@ const DepartmentMaster = () => {
         // Clear the state
         setEditedDepartmentMaster({
             srNo: '',
-            deptname: '',
+            deptName: '',
         });
 
         setNewDepartmentMaster({
             srNo: '',
-            deptname: '',
+            deptName: '',
         });
 
         setError('');
@@ -151,14 +151,14 @@ const DepartmentMaster = () => {
 
     const handleSave = async () => {
 
-        if (!editedDepartmentMaster.deptname) {
+        if (!editedDepartmentMaster.deptName) {
             setError("Fields cannot be empty");
             return;
         }
 
         try {
             // Check if department exists
-            const checkResponse = await fetch(`http://localhost:5213/api/Departments/CheckDepartments/${editedDepartmentMaster.deptname}`);
+            const checkResponse = await fetch(`http://localhost:5213/api/Departments/CheckDepartments/${editedDepartmentMaster.deptName}`);
             if (!checkResponse.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -175,7 +175,7 @@ const DepartmentMaster = () => {
                     },
                     body: JSON.stringify({
                         srNo: editedDepartmentMaster.srNo,
-                        deptname:editedDepartmentMaster.deptname,
+                        deptName:editedDepartmentMaster.deptName,
                     }),
                 });
 
@@ -186,7 +186,7 @@ const DepartmentMaster = () => {
                 setSuccessMessage('Data updated successfully');
                 setEditedDepartmentMaster({
                     srNo: '',
-                    deptname: ''
+                    deptName: '',
                 });
             }
             setTimeout(() => {
@@ -211,7 +211,6 @@ const DepartmentMaster = () => {
             ...editedDepartmentMaster,
             [name]: value
         });
-        console.log("now here", editedDepartmentMaster.deptname);
     };
 
     const handleAddInputChange = (event) => {
@@ -223,11 +222,11 @@ const DepartmentMaster = () => {
     }
 
 
-    const handleDeleteConfirmation = (srno) => {
+    const handleDeleteConfirmation = (srNo) => {
         const isConfirmed = window.confirm('Are you sure you want to delete the department?');
 
         if (isConfirmed) {
-            handleDelete(srno);
+            handleDelete(srNo);
         }
     };
 
@@ -240,9 +239,9 @@ const DepartmentMaster = () => {
         }
     };
 
-    const handleDelete = async (srno) => {
+    const handleDelete = async (srNo) => {
         try {
-            const response = await fetch(`http://localhost:5213/api/Departments/${srno}`, {
+            const response = await fetch(`http://localhost:5213/api/Departments/${srNo}`, {
                 method: 'DELETE',
             });
 
@@ -259,8 +258,8 @@ const DepartmentMaster = () => {
 
     const handleSelectedDelete = async () => {
         try {
-            await Promise.all(selectedRows.map(async (srno) => {
-                const response = await fetch(`http://localhost:5213/api/Departments/${srno}`, {
+            await Promise.all(selectedRows.map(async (srNo) => {
+                const response = await fetch(`http://localhost:5213/api/Departments/${srNo}`, {
                     method: 'DELETE',
                 });
 
@@ -339,7 +338,7 @@ const DepartmentMaster = () => {
                                                     checked={selectedRows.includes(departmentMaster.srNo)}
                                                 />
                                             </td>
-                                            <td>{departmentMaster.deptname}</td>
+                                            <td>{departmentMaster.deptName}</td>
                                             <td>
                                                 <button className="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handleEdit(departmentMaster)}>
                                                     <FontAwesomeIcon icon={faEdit} />
@@ -371,8 +370,8 @@ const DepartmentMaster = () => {
                         </div>
                         <div className="modal-body">
                             <div className="input_text">
-                                <label htmlFor="editDepartment" className="form-label2">Department</label>
-                                <input type="text" className="form-control2" id="addDepartment" name="deptname" value={newDepartmentMaster.deptname} onChange={handleAddInputChange} />
+                                <label htmlFor="deptName" className="form-label2">Department</label>
+                                <input type="text" className="form-control2" id="addDepartment" name="deptName" value={newDepartmentMaster.deptName} onChange={handleAddInputChange} />
                             </div>
                         </div>
                         <div className="modal-footer">
@@ -398,8 +397,8 @@ const DepartmentMaster = () => {
                         </div>
                         <div className="modal-body">
                             <div className="input_text">
-                                <label htmlFor="editDepartment" className="form-label2">Department</label>
-                                <input type="text" className="form-control2" id="editDepartment" name="deptname" value={editedDepartmentMaster.deptname} onChange={handleInputChange} />
+                                <label htmlFor="deptName" className="form-label2">Department</label>
+                                <input type="text" className="form-control2" id="editDepartment" name="deptName" value={editedDepartmentMaster.deptName} onChange={handleInputChange} />
                             </div>
                         </div>
                         <div className="modal-footer">

@@ -147,7 +147,7 @@ const ForgotPasswordPage = () => {
 
                         <div className="right-side">
                             <div className="hello">
-                                <div className="min-img text-center justify-content-center">
+                                <div className="flogo min-img text-center justify-content-center">
                                     <img src={logo} alt="Logo" />
                                 </div>
                                 <br />

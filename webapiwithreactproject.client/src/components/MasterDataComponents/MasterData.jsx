@@ -14,6 +14,8 @@ import VillageMaster from './VillageMaster';
 import EmployeeCatagoryMaster from './EmployeeCatagoryMaster';
 import EmployeeMaster from './Employee/EmployeeMaster';
 import ControllerReader from './CardControllerData/ControllerReader';
+import CardFormats from './CardControllerData/CardFormats'
+import EmployeeClassification from './Employee/EmployeeClassification';
 
 
 const MasterData = () => {
@@ -197,7 +199,7 @@ const MasterData = () => {
                                     {selectedLink === 'link9' && <VillageMaster />}
                                     {selectedLink === 'link10' && <EmployeeCatagoryMaster />}
                                     {selectedLink === 'link11' && <ControllerReader />}
-                                    {selectedLink === 'link12' && <LocationMaster />}
+                                    {selectedLink === 'link12' && <CardFormats />}
                                     {selectedLink === 'link13' && <DepartmentMaster />}
                                     {selectedLink === 'link14' && <SubDepartmentMaster />}
                                     {selectedLink === 'link15' && <DesignationMaster />}
@@ -210,7 +212,7 @@ const MasterData = () => {
                                     {selectedLink === 'link22' && <VillageMaster />}
                                     {selectedLink === 'link23' && <EmployeeCatagoryMaster />}
                                     {selectedLink === 'link24' && <EmployeeMaster />}
-                                    {selectedLink === 'link25' && <DistrictMaster />}
+                                    {selectedLink === 'link25' && <EmployeeClassification />}
                                     {selectedLink === 'link26' && <VillageMaster />}
                                     {selectedLink === 'link27' && <EmployeeCatagoryMaster />}
                                     {selectedLink === 'link28' && <DistrictMaster />}

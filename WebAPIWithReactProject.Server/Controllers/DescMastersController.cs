@@ -27,6 +27,21 @@ namespace WebAPIWithReactProject.Server.Controllers
             return await _context.DescMasters.ToListAsync();
         }
 
+        // GET: api/Designations/Name/{id}
+        [HttpGet("Name/{id}")]
+        public async Task<ActionResult<string>> GetDesignationName(int id)
+        {
+            var desig = await _context.DescMasters.FindAsync(id);
+
+            if (desig == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(desig.Designation); 
+        }
+
+
 
         // POST: api/Designations
 

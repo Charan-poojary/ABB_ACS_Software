@@ -7,7 +7,8 @@ import RealTime from '../components/RealTimeComponents/RealTime';
 import Settings from '../components/SettingsComponents/Settings';
 import Reports from '../components/ReportsComponents/Reports';
 import IconGrid from '../components/Navigation/IconGrid';
-import ForgotPasswordPage from './ForgotPasswordPage'; 
+import ForgotPasswordPage from './ForgotPasswordPage';
+import companyLogo from '../assets/images/Bharat_Petroleum_logo_PNG.png';
 
 
 const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, onSendControllerSettingClick, onEmployeeMasterClick, onIEemployeeClick, onEmployeeRegisterationClick, onStatusMonitoringClick, onTemplateTransferClick, onFifoReportClick, onUpdateLicenceClick }) => {
@@ -125,10 +126,15 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
             />
             )}
             {!showChangePassword && (
-                <div className="container-fluid">
-                    <h2 className="display-4 ms-md-2">Welcome, <span className="text-danger">{username}</span></h2>
-                    <p className="h6 ms-md-3">Last Login: <span className="text-primary">{loginTime}</span></p>
-                    <p className="h6 ms-md-3">Access Service Status: <span className="text-danger">{lastAccessTime}</span></p>
+                <div className="container-fluid d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 className="display-6 ms-md-2">Welcome, <span className="text-danger">{username}</span></h2>
+                        <p className="h6 ms-md-3">Last Login: <span className="text-primary">{loginTime}</span></p>
+                        <p className="h6 ms-md-3">Access Service Status: <span className="text-danger">{lastAccessTime}</span></p>
+                    </div>
+                    <div>
+                        <img src={companyLogo} alt="Company Logo" className="img-fluid" style={{ maxWidth: '250px' }} />
+                    </div>
                 </div>
             )}
             {!showChangePassword && (

@@ -22,40 +22,54 @@ namespace WebAPIWithReactProject.Server.Controllers
 
         // GET: api/Departments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Department>>> GetDepartments()
+        public async Task<ActionResult<IEnumerable<DeptCode>>> GetDepartments()
         {
-            return await _context.Departments.ToListAsync();
+            return await _context.DeptCodes.ToListAsync();
+        }
+
+        // GET: api/Departments/Name/{id}
+        [HttpGet("Name/{id}")]
+        public async Task<ActionResult<string>> GetDepartmentName(int id)
+        {
+            var dept = await _context.DeptCodes.FindAsync(id);
+
+            if (dept == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(dept.DeptName); 
         }
 
 
-        // POST: api/Departments/CheckDepartments/{deptname}
+        // GET: api/Departments/CheckDepartments/{deptname}
 
         [HttpGet("CheckDepartments/{deptname}")]
         public async Task<IActionResult> CheckDepartments(string deptname)
         {
-            var exists = await _context.Departments.AnyAsync(cm => cm.Deptname == deptname);
+            var exists = await _context.DeptCodes.AnyAsync(cm => cm.DeptName == deptname);
             return Ok(new { exists });
         }
 
         // POST: api/Departments
 
         [HttpPost]
-        public async Task<ActionResult<Department>> PostDepartments(Department dp)
+        public async Task<ActionResult<DeptCode>> PostDepartments(DeptCode dp)
         {
             // Check if a Departments with the same name already exists
 
-            if (_context.Departments.Any(c => c.Deptname == dp.Deptname))
+            if (_context.DeptCodes.Any(c => c.DeptName == dp.DeptName))
             {
-                return Conflict(new { message = $"A department with the name '{dp.Deptname}' already exists." });
+                return Conflict(new { message = $"A department with the name '{dp.DeptName}' already exists." });
             }
 
-            var newDepartmentMaster = new Department
+            var newDepartmentMaster = new DeptCode
             {
-                Deptname = dp.Deptname,
+                DeptName = dp.DeptName,
 
             };
 
-            _context.Departments.Add(newDepartmentMaster);
+            _context.DeptCodes.Add(newDepartmentMaster);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetDepartments", new { id = newDepartmentMaster.SrNo }, newDepartmentMaster);
@@ -64,7 +78,7 @@ namespace WebAPIWithReactProject.Server.Controllers
         // PUT: api/Departments/5
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDepartments(int id, Department dp)
+        public async Task<IActionResult> PutDepartments(int id, DeptCode dp)
         {
             if (id != dp.SrNo)
             {
@@ -96,13 +110,13 @@ namespace WebAPIWithReactProject.Server.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDepartments(int id)
         {
-            var dp = await _context.Departments.FindAsync(id);
+            var dp = await _context.DeptCodes.FindAsync(id);
             if (dp == null)
             {
                 return NotFound();
             }
 
-            _context.Departments.Remove(dp);
+            _context.DeptCodes.Remove(dp);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -111,7 +125,7 @@ namespace WebAPIWithReactProject.Server.Controllers
 
         private bool DepartmentExists(int id)
         {
-            return _context.Departments.Any(e => e.SrNo == id);
+            return _context.DeptCodes.Any(e => e.SrNo == id);
         }
     }
 }

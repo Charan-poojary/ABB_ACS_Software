@@ -25,10 +25,9 @@ namespace WebAPIWithReactProject.Server.Controllers
         {
             return await _context.CompanyMasters.ToListAsync();
         }
-
         // GET: api/CompanyMasters/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<CompanyMaster>> GetCompanyMaster(int id)
+        public async Task<ActionResult<string>> GetCompanyMasterName(int id)
         {
             var companyMaster = await _context.CompanyMasters.FindAsync(id);
 
@@ -37,7 +36,7 @@ namespace WebAPIWithReactProject.Server.Controllers
                 return NotFound();
             }
 
-            return companyMaster;
+            return Ok(companyMaster.Compname); // Return only the company name
         }
 
         // POST: api/CompanyMasters/CheckCompanyName/{compname}

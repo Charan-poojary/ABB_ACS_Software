@@ -59,6 +59,10 @@
     display: block
 }
 
+.flogo{
+    padding-bottom:100px;
+}
+
 .register p {
     display: flex;
     justify-content: end;
