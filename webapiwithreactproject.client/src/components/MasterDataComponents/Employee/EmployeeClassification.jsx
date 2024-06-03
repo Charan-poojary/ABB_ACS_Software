@@ -489,8 +489,8 @@ const EmployeeClassification = () => {
                                     onChange={handleSearchInputChange}
                                 >
                                     <option value="">All</option>
-                                    <option value="1">Active</option>
-                                    <option value="2">Deactive</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Deactive">Deactive</option>
                                 </select>
                             </div>
                             <div className="col-md-3 mb-2">

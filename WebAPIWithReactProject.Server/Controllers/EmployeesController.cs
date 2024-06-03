@@ -44,6 +44,36 @@ namespace WebAPIWithReactProject.Server.Controllers
             return Ok(new { exists });
         }
 
+        // POST: api/Employees/Add
+        [HttpPost("Add")]
+        public async Task<ActionResult<Employee>> PostEmployee([FromBody] Employee des)
+        {
+            // Check if a Employee with the same empcode already exists
+            if (_context.Employees.Any(e => e.Empcode == des.Empcode))
+            {
+                return Conflict(new { message = $"A Employee with the empcode '{des.Empcode}' already exists." });
+            }
+
+            // Check if a Employee with the same card number already exists
+            if (_context.Employees.Any(e => e.Cardno == des.Cardno))
+            {
+                return Conflict(new { message = $"A Employee with the card number '{des.Cardno}' already exists." });
+            }
+
+            var newEmployeeMaster = new Employee
+            {
+                Empcode = des.Empcode,
+                Fname = des.Fname,
+                Cardno = des.Cardno,
+                Pin = des.Pin,
+            };
+
+            _context.Employees.Add(newEmployeeMaster);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetEmployees", new { id = newEmployeeMaster.Srno }, newEmployeeMaster);
+        }
+
 
 
         // POST: api/Employees
@@ -92,7 +122,6 @@ namespace WebAPIWithReactProject.Server.Controllers
                 return NotFound();
             }
 
-            // Update only the fields that are specified in the des object
             if (!string.IsNullOrEmpty(des.Compid))
             {
                 existingEmployee.Compid = des.Compid;
@@ -164,53 +193,48 @@ namespace WebAPIWithReactProject.Server.Controllers
             return await query.ToListAsync();
         }
 
-        // Search: api/Employee/SearchByDetails
 
-        [HttpGet("SearchByDetails")]
-        public async Task<ActionResult<IEnumerable<Employee>>> SearchEmployeesByDetails(
-            string compid = "",
-            string locationid = "",
-            string deptname = "",
-            string status = "",
-            string designation = "",
-            string section = "" )
+        // PUT: api/Employees/UpdateEmployee/{id}
+
+        [HttpPut("UpdateEmployee/{id}")]
+        public async Task<IActionResult> UpdateEmployee(int id, [FromBody] Employee des)
         {
-            var query = _context.Employees.AsQueryable();
-
-            if (!string.IsNullOrEmpty(compid))
+            if (id != des.Srno)
             {
-                query = query.Where(e => e.Compid.Contains(compid));
+                return BadRequest(new { message = "Employee ID mismatch" });
             }
 
-            if (!string.IsNullOrEmpty(locationid))
+            var existingEmployee = await _context.Employees.FindAsync(id);
+            if (existingEmployee == null)
             {
-                query = query.Where(e => e.Locationid.Contains(locationid));
+                return NotFound(new { message = "Employee not found" });
             }
 
-            if (!string.IsNullOrEmpty(deptname))
+            existingEmployee.Empcode = des.Empcode;
+            existingEmployee.Fname = des.Fname;
+            existingEmployee.Cardno = des.Cardno;
+            existingEmployee.Pin = des.Pin;
+
+            _context.Entry(existingEmployee).State = EntityState.Modified;
+
+            try
             {
-                query = query.Where(e => e.DeptName.Contains(deptname));
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EmployeesExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
-            if (!string.IsNullOrEmpty(status))
-            {
-                query = query.Where(e => e.Status.Contains(status));
-            }
-
-            if (!string.IsNullOrEmpty(designation))
-            {
-                query = query.Where(e => e.Designation.Contains(designation));
-            }
-
-            if (!string.IsNullOrEmpty(section))
-            {
-                query = query.Where(e => e.Section.Contains(section));
-            }
-
-            return await query.ToListAsync();
-            
+            return NoContent();
         }
-
 
 
         // DELETE: api/Employee/5

@@ -68,7 +68,7 @@ const EmployeeMaster = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5213/api/Employee', {
+            const response = await fetch('http://localhost:5213/api/Employee/Add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -153,7 +153,7 @@ const EmployeeMaster = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5213/api/Employee/${editedEmployeeMaster.srno}`, {
+            const response = await fetch(`http://localhost:5213/api/Employee/UpdateEmployee/${editedEmployeeMaster.srno}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

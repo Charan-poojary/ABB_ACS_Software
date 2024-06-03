@@ -16,6 +16,9 @@ import EmployeeMaster from './Employee/EmployeeMaster';
 import ControllerReader from './CardControllerData/ControllerReader';
 import CardFormats from './CardControllerData/CardFormats'
 import EmployeeClassification from './Employee/EmployeeClassification';
+import ImportExportEmployees from './Employee/ImportExportEmployees';
+import EmployeeRegisteration from './Employee/EmployeeRegisteration';
+import ImportVridiTemplates from './Employee/ImportVridiTemplates';
 
 
 const MasterData = () => {
@@ -213,9 +216,9 @@ const MasterData = () => {
                                     {selectedLink === 'link23' && <EmployeeCatagoryMaster />}
                                     {selectedLink === 'link24' && <EmployeeMaster />}
                                     {selectedLink === 'link25' && <EmployeeClassification />}
-                                    {selectedLink === 'link26' && <VillageMaster />}
-                                    {selectedLink === 'link27' && <EmployeeCatagoryMaster />}
-                                    {selectedLink === 'link28' && <DistrictMaster />}
+                                    {selectedLink === 'link26' && <ImportExportEmployees />}
+                                    {selectedLink === 'link27' && <EmployeeRegisteration />}
+                                    {selectedLink === 'link28' && <ImportVridiTemplates />}
                                     {selectedLink === 'link29' && <VillageMaster />}
                                     {selectedLink === 'link30' && <EmployeeCatagoryMaster />}
                                     {selectedLink === 'link31' && <DistrictMaster />}
