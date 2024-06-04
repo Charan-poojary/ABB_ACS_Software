@@ -19,6 +19,8 @@ import EmployeeClassification from './Employee/EmployeeClassification';
 import ImportExportEmployees from './Employee/ImportExportEmployees';
 import EmployeeRegisteration from './Employee/EmployeeRegisteration';
 import ImportVridiTemplates from './Employee/ImportVridiTemplates';
+import HelperMaster from './Employee/HelperMaster';
+import DriverMaster from './Employee/DriverMaster';
 
 
 const MasterData = () => {
@@ -219,8 +221,8 @@ const MasterData = () => {
                                     {selectedLink === 'link26' && <ImportExportEmployees />}
                                     {selectedLink === 'link27' && <EmployeeRegisteration />}
                                     {selectedLink === 'link28' && <ImportVridiTemplates />}
-                                    {selectedLink === 'link29' && <VillageMaster />}
-                                    {selectedLink === 'link30' && <EmployeeCatagoryMaster />}
+                                    {selectedLink === 'link29' && <HelperMaster />}
+                                    {selectedLink === 'link30' && <DriverMaster />}
                                     {selectedLink === 'link31' && <DistrictMaster />}
                                     {selectedLink === 'link32' && <VillageMaster />}
                                     {selectedLink === 'link33' && <EmployeeCatagoryMaster />}

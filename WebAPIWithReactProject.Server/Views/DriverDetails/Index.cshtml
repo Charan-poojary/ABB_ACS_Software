@@ -1,0 +1,329 @@
+﻿@model IEnumerable<WebAPIWithReactProject.Server.Models.DriverDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Otlno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dlno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dlvalidity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endorsement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cert3DayPcvoNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cert3DayPcvoDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cert3DayPcvoValidity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cert1DayPcvoNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cert1DayPcvoDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cert1DayPcvoValidity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policeverification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Blacklisted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DhAutoUnreged)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Locationid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accesstype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accessgroups)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pbexemptyn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Extendedyn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pinexemptyn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uploadedyn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ldate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Caddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Validfrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Validto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Applyvalid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FatherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roleid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inschedelevator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Outschedelevator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pfno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cardno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Facilitycode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nofmt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uniqueid)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Otlno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dlno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dlvalidity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endorsement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cert3DayPcvoNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cert3DayPcvoDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cert3DayPcvoValidity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cert1DayPcvoNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cert1DayPcvoDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cert1DayPcvoValidity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Policeverification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Blacklisted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DhAutoUnreged)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enrollno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Compid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locationid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accesstype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accessgroups)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pbexemptyn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Extendedyn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pinexemptyn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uploadedyn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ldate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Caddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Validfrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Validto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Applyvalid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roleid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inschedelevator)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Outschedelevator)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pfno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cardno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Facilitycode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nofmt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uniqueid)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Empid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Empid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Empid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
