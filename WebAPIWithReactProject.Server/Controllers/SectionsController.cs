@@ -51,6 +51,7 @@ namespace WebAPIWithReactProject.Server.Controllers
 
             var newSectionMaster = new Sectionmaster
             {
+                Srno = sec.Srno,
                 Sectionname = sec.Sectionname,
                 Sectionhead = sec.Sectionhead,
                 Email = sec.Email,

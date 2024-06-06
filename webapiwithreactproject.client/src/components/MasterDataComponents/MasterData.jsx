@@ -21,6 +21,9 @@ import EmployeeRegisteration from './Employee/EmployeeRegisteration';
 import ImportVridiTemplates from './Employee/ImportVridiTemplates';
 import HelperMaster from './Employee/HelperMaster';
 import DriverMaster from './Employee/DriverMaster';
+import Vehicles from './Vehicle/Vehicles';
+import RegisterVehicles from './Vehicle/RegisterVehicles';
+import UnRegisterVehicles from './Vehicle/UnregisterVehicles';
 
 
 const MasterData = () => {
@@ -223,10 +226,9 @@ const MasterData = () => {
                                     {selectedLink === 'link28' && <ImportVridiTemplates />}
                                     {selectedLink === 'link29' && <HelperMaster />}
                                     {selectedLink === 'link30' && <DriverMaster />}
-                                    {selectedLink === 'link31' && <DistrictMaster />}
-                                    {selectedLink === 'link32' && <VillageMaster />}
-                                    {selectedLink === 'link33' && <EmployeeCatagoryMaster />}
-
+                                    {selectedLink === 'link31' && <Vehicles />}
+                                    {selectedLink === 'link32' && <RegisterVehicles />}
+                                    {selectedLink === 'link33' && <UnRegisterVehicles />}
                                 </div>
                             </div>
                         </div>

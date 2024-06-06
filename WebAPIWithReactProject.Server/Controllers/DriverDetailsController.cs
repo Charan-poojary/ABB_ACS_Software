@@ -49,7 +49,7 @@ namespace WebAPIWithReactProject.Server.Controllers
         // POST: api/DriverDetails
 
         [HttpPost]
-        public async Task<ActionResult<DriverDetail>> PostDriverDetailsC(DriverDetail des)
+        public async Task<ActionResult<DriverDetail>> PostDriverDetails(DriverDetail des)
         {
             // Check if a Category with the same name already exists
 
@@ -65,7 +65,7 @@ namespace WebAPIWithReactProject.Server.Controllers
                 Cardno = des.Cardno,
                 Pin = des.Pin,
                 Otlno = des.Otlno,
-
+                Dlno = des.Dlno,
             };
 
             _context.DriverDetails.Add(newDriverDetailsMaster);

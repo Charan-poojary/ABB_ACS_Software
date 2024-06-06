@@ -7,19 +7,21 @@ import { faPlus, faSync, faEdit } from '@fortawesome/free-solid-svg-icons';
 const DriverMaster = () => {
     const [EmployeeMasters, setEmployeeMasters] = useState([]);
     const [editedEmployeeMaster, setEditedEmployeeMaster] = useState({
-        empcode: '',
-        name: '',
-        cardno: '',
-        pin: '',
-        otlno: '',
-    });
-    const [newEmployeeMaster, setNewEmployeeMaster] = useState({
         empid: '',
         empcode: '',
         name: '',
         cardno: '',
         pin: '',
         otlno: '',
+        dlno: '',
+    });
+    const [newEmployeeMaster, setNewEmployeeMaster] = useState({
+        empcode: '',
+        name: '',
+        cardno: '',
+        pin: '',
+        otlno: '',
+        dlno:'',
     });
     const [searchParams, setSearchParams] = useState({
         empcode: '',
@@ -69,6 +71,7 @@ const DriverMaster = () => {
             setError("Fields cannot be empty");
             return;
         }
+        console.log("dbeybuh",newEmployeeMaster);
 
         try {
             const response = await fetch('http://localhost:5213/api/DriverDetails', {
@@ -76,13 +79,7 @@ const DriverMaster = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    empcode: newEmployeeMaster.empcode,
-                    name: newEmployeeMaster.fname,
-                    cardno: newEmployeeMaster.cardno,
-                    pin: newEmployeeMaster.pin,
-                    otlno: newEmployeeMaster.otlno,
-                }),
+                body: JSON.stringify(newEmployeeMaster),
             });
 
             if (!response.ok) {
@@ -96,6 +93,7 @@ const DriverMaster = () => {
                 cardno: '',
                 pin: '',
                 otlno: '',
+                dlno: '',
             });
 
             setTimeout(() => {
@@ -121,6 +119,7 @@ const DriverMaster = () => {
             cardno: '',
             pin: '',
             otlno: '',
+            dlno: '',
         });
 
         setNewEmployeeMaster({
@@ -129,6 +128,7 @@ const DriverMaster = () => {
             cardno: '',
             pin: '',
             otlno: '',
+            dlno: '',
         });
 
         setError('');
@@ -170,6 +170,7 @@ const DriverMaster = () => {
                     cardno: editedEmployeeMaster.cardno,
                     pin: editedEmployeeMaster.pin,
                     otlno: editedEmployeeMaster.otlno,
+                    dlno:editedEmployeeMaster.dlno,
                 }),
             });
 
@@ -185,6 +186,7 @@ const DriverMaster = () => {
                 cardno: '',
                 pin: '',
                 otlno: '',
+                dlno: '',
             });
 
             setTimeout(() => {
@@ -392,7 +394,7 @@ const DriverMaster = () => {
                         {error && <div className="alert alert-danger">{error}</div>}
                         {successMessage && <div className="alert alert-success">{successMessage}</div>}
                         <div className="modal-header">
-                            <h5 className="modal-title" id="addModalLabel">Add Helper Details</h5>
+                            <h5 className="modal-title" id="addModalLabel">Add Driver Details</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={handleCancel}></button>
                         </div>
                         <div className="modal-body">
@@ -446,6 +448,16 @@ const DriverMaster = () => {
                                     onChange={handleNewInputChange}
                                 />
                             </div>
+                            <div className="mb-3">
+                                <label className="form-label2">Dl No</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="dlno"
+                                    value={newEmployeeMaster.dlno}
+                                    onChange={handleNewInputChange}
+                                />
+                            </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={handleCancel}>Close</button>
@@ -462,7 +474,7 @@ const DriverMaster = () => {
                         {error && <div className="alert alert-danger">{error}</div>}
                         {successMessage && <div className="alert alert-success">{successMessage}</div>}
                         <div className="modal-header">
-                            <h5 className="modal-title" id="editModalLabel">Edit Helper Details</h5>
+                            <h5 className="modal-title" id="editModalLabel">Edit Driver Details</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={handleCancel}></button>
                         </div>
                         <div className="modal-body">
@@ -513,7 +525,17 @@ const DriverMaster = () => {
                                     className="form-control2"
                                     name="otlno"
                                     value={editedEmployeeMaster.otlno}
-                                    onChange={handleNewInputChange}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label2">Dl No</label>
+                                <input
+                                    type="text"
+                                    className="form-control2"
+                                    name="dlno"
+                                    value={editedEmployeeMaster.dlno}
+                                    onChange={handleInputChange}
                                 />
                             </div>
                         </div>

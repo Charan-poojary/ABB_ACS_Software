@@ -7,6 +7,7 @@ import { faPlus, faTrash, faSync, faEdit } from '@fortawesome/free-solid-svg-ico
 const SectionMaster = () => {
     const [sectionMasters, setSectionMasters] = useState([]);
     const [selectedRows, setSelectedRows] = useState([]);
+    const [SerialNo, setSerialNo] = useState();
     const [editedSectionMaster, setEditedSectionMaster] = useState({
         srno: '',
         sectionname: '',
@@ -15,7 +16,7 @@ const SectionMaster = () => {
         contactno: '',
     });
     const [newSectionMaster, setNewSectionMaster] = useState({
-        srno: '',
+        srno:'',
         sectionname: '',
         sectionhead: '',
         email: '',
@@ -49,6 +50,8 @@ const SectionMaster = () => {
             }
             const data = await response.json();
             setSectionMasters(data);
+            const length = data.length;
+            setSerialNo(length);
             console.log("here", data);
         } catch (error) {
             console.error('There was a problem with your fetch operation:', error);
@@ -98,17 +101,14 @@ const SectionMaster = () => {
 
             }
             else {
+                const serialNo = SerialNo + 1;
+                newSectionMaster.srno = serialNo;
                 const response = await fetch('http://localhost:5213/api/Sections', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        sectionname: newSectionMaster.sectionname,
-                        sectionhead: newSectionMaster.sectionhead,
-                        email: editedSectionMaster.email,
-                        contactno: editedSectionMaster.contactno,
-                    }),
+                    body: JSON.stringify(newSectionMaster),
                 });
 
                 if (!response.ok) {
@@ -149,7 +149,6 @@ const SectionMaster = () => {
         });
 
         setNewSectionMaster({
-            srno: '',
             sectionname: '',
             sectionhead: '',
             email: '',
