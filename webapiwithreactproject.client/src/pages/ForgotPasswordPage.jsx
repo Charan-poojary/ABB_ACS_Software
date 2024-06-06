@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
 import React, { useState, useEffect, useRef } from 'react';
 import logo from '../assets/images/logo.png';
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles/Login.css';
 import emailjs from 'emailjs-com';
+import config from '../config';
 
 const ForgotPasswordPage = () => {
     const [email, setEmail] = useState('');
@@ -39,9 +41,9 @@ const ForgotPasswordPage = () => {
     }, []);
 
     const sendEmail = (generatedOtp, username,userEmail) => {
-        const serviceID = 'service_8vyt2oq';
-        const templateID = 'template_xeo9gwh';
-        const userID = 'cM0uQ4EtAbOl8m5ap';
+        const user_id = config.EMAILJS_USER_ID;
+        const template_id = config.EMAILJS_TEMPLATE_ID;
+        const service_id = config.EMAILJS_SERVICE_ID;
 
         const templateParams = {
             name: username,
@@ -49,7 +51,7 @@ const ForgotPasswordPage = () => {
             userEmail: userEmail,
         };
 
-        emailjs.send(serviceID, templateID, templateParams, userID)
+        emailjs.send(service_id, template_id, templateParams, user_id)
             .then((response) => {
                 setSuccessMessage('OTP sent successfully');
                 console.log(response);
@@ -85,19 +87,26 @@ const ForgotPasswordPage = () => {
         setOtp(generatedOtp);
         setOtpExpired(false);
         clearTimeout(otpTimer);
+        console.log("hererexd", email);
 
-        fetch(`http://localhost:5213/api/Admin/forgot-password?email=${email}`)
-            .then(response => response.ok ? response.text() : Promise.reject(response))
-            .then(uname => {
-                setUser(uname);
-                sendEmail(generatedOtp, uname,email);
-                setShowEmailInput(false);
-                setOriginalEmail(email);
-            })
-            .catch(error => {
-                setError('User not found');
-            });
+        try {
+        console.log("hererexd", email);
+
+            const response = await fetch(`http://localhost:5213/api/Admin/forgot-password?email=${email}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const uname = await response.text();
+            setUser(uname);
+            sendEmail(generatedOtp, uname, email);
+            setShowEmailInput(false);
+            setOriginalEmail(email);
+        } catch (error) {
+            console.error('There has been a problem with your fetch operation:', error);
+            setError('User not found');
+        }
     };
+
 
     useEffect(() => {
         if (remainingTime > 0) {

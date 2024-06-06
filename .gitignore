@@ -36,3 +36,7 @@ obj/
 # database config info  
 /appsettings.json
 /appsettings.Development.json
+
+
+#email service 
+/config.js
