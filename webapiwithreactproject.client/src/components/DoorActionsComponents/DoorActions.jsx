@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import CompanyMaster from './CompanyMaster';
+import DoorOpenClose from './DoorOpenClose';
 
 
 const DoorActions = () => {
@@ -36,7 +36,7 @@ const DoorActions = () => {
 
                             <div className="col-md-8">
                                 <div className="main-content">
-                                    {selectedLink === 'link1' && <CompanyMaster />}
+                                    {selectedLink === 'link1' && <DoorOpenClose />}
                                 </div>
                             </div>
                         </div>

@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import CompanyMaster from './CompanyMaster';
-import LocationMaster from './LocationMaster';
-
-
-
+import RealTimeData from './RealTimeData';
+import Events from './Events';
 
 const RealTime = () => {
     const [selectedLink, setSelectedLink] = useState(null);
@@ -47,8 +44,8 @@ const RealTime = () => {
 
                             <div className="col-md-8">
                                 <div className="main-content">
-                                    {selectedLink === 'link1' && <CompanyMaster />}
-                                    {selectedLink === 'link2' && <LocationMaster />}
+                                    {selectedLink === 'link1' && <RealTimeData />}
+                                    {selectedLink === 'link2' && <Events />}
                                 </div>
                             </div>
                         </div>

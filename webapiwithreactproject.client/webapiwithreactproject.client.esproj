@@ -11,5 +11,6 @@
   <ItemGroup>
     <Folder Include="public\" />
     <Folder Include="src\components\MasterDataComponents\Employee\" />
+    <Folder Include="src\components\MasterDataComponents\Vehicle\" />
   </ItemGroup>
 </Project>

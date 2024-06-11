@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import CompanyMaster from './CompanyMaster';
-import LocationMaster from './LocationMaster';
-import DepartmentMaster from './DepartmentMaster';
+import PendingActivities from './PendingActivities';
+import RestoreDeviceLogs from './RestoreDeviceLogs';
+import FingerQualitySetting from './FingerQualitySetting';
+import SuperAdmin from './UserManagement/SuperAdmin';
+import SectionAdmin from './UserManagement/SectionAdmin';
+import Employee from './UserManagement/Employee';
+import HierarchyAdmin from './UserManagement/HierarchyAdmin';
+
 
 
 const Settings = () => {
@@ -32,28 +37,28 @@ const Settings = () => {
                                                 User Management
                                             </Link>
                                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><Link className="dropdown-item" to="/home">Super Admin</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" >Section Admin</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" >Employee</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" >Hierarchy Admin</Link></li>
+                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link1')}>Super Admin</Link></li>
+                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link2')}>Section Admin</Link></li>
+                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link3')}>Employee</Link></li>
+                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link4')}>Hierarchy Admin</Link></li>
                                             </ul>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link1')}>
+                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link5')}>
                                                 <FontAwesomeIcon icon={faCaretRight}/>
                                                 &nbsp;
                                                 Pending Activities
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link2')}>
+                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link6')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Restore Device Logs
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link3')}>
+                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link7')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Finger Quality Setting
@@ -63,11 +68,17 @@ const Settings = () => {
                                 </div>
                             </div>
 
+                            
+
                             <div className="col-md-8">
                                 <div className="main-content">
-                                    {selectedLink === 'link1' && <CompanyMaster />}
-                                    {selectedLink === 'link2' && <LocationMaster />}
-                                    {selectedLink === 'link3' && <DepartmentMaster />}
+                                    {selectedLink === 'link1' && <SuperAdmin />}
+                                    {selectedLink === 'link2' && <SectionAdmin />}
+                                    {selectedLink === 'link3' && <Employee />}
+                                    {selectedLink === 'link4' && <HierarchyAdmin />}
+                                    {selectedLink === 'link5' && <PendingActivities />}
+                                    {selectedLink === 'link6' && <RestoreDeviceLogs />}
+                                    {selectedLink === 'link7' && <FingerQualitySetting />}
                                 </div>
                             </div>
                         </div>

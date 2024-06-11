@@ -3,7 +3,7 @@ import '../../assets/styles/fetchEmployee.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash, faSync } from '@fortawesome/free-solid-svg-icons';
 
-const CompanyMaster = () => {
+const PendingActivities = () => {
 
     return (
         <>
@@ -45,4 +45,4 @@ const CompanyMaster = () => {
     );
 };
 
-export default CompanyMaster;
+export default PendingActivities;

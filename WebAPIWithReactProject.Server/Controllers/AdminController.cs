@@ -29,6 +29,8 @@ namespace WebAPIWithReactProject.Server.Controllers
             return await _context.Admins.ToListAsync();
         }
 
+
+
         // GET: api/Admin/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Admin>> GetAdminTable(int id)
@@ -42,6 +44,22 @@ namespace WebAPIWithReactProject.Server.Controllers
 
             return adminTable;
         }
+
+
+        [HttpGet("check-username")]
+        public async Task<IActionResult> CheckUsername(string username)
+        {
+            var exists = await _context.Admins.AnyAsync(a => a.Uname == username);
+
+            if (exists)
+            {
+                return Ok(new { exists = true });
+            }
+
+            return Ok(new { exists = false });
+        }
+
+
 
         // GET : api/Admin/by-credentials?usernameOrEmail=ram&password=1234
 
