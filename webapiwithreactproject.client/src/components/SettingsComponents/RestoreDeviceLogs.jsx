@@ -1,68 +1,146 @@
 import React, { useState, useEffect } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import '../../assets/styles/fetchEmployee.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash, faSync } from '@fortawesome/free-solid-svg-icons';
 
 const RestoreDeviceLogs = () => {
-    const [employees, setEmployees] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetch('http://localhost:5213/api/Employees')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch data');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-                setEmployees(data);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                setLoading(false);
-            });
-    }, []);
-
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
     return (
         <>
-            <div className="container employeeContainer">
+            <div className="container employeeContainer mt-2 justify-content-center align-items-start">
                 <div className='card'>
-                    <h1 className="mb-4 ms-2">Department Master</h1>
+                    <h1 className="mb-4 ms-2">Restore Logs</h1>
                     <div className='container-fluid mb-4'>
-                        <button className="custom-btn primary">
-                            <FontAwesomeIcon icon={faPlus} className="me-2" />
-                            Create
-                        </button>
-                        <button className="custom-btn danger ms-2">
-                            <FontAwesomeIcon icon={faTrash} className="me-2" />
-                            Delete
-                        </button>
-                        <button className="custom-btn secondary float-end">
-                            <FontAwesomeIcon icon={faSync} />
-                        </button>
-                    </div>
-                        <div className="table-responsive text-center">
-                            <table className="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Employee Id</th>
-                                        <th>Name</th>
-                                        <th>City</th>
-                                        <th>Department</th>
-                                        <th>Gender</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                </tbody>
-                            </table>
+                        <div className="row mb-4">
+                            <div className="col ms-2 me-2">
+                                <div className="table-responsive" style={{ height: '300px', overflowX: 'auto' }}>
+                                    <table className="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Select</th>
+                                                <th>Controller</th>
+                                                <th>IP address</th>
+                                                <th>Send Activity</th>
+                                                <th>Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input
+                                                        type="checkbox"
+                                                    />
+                                                </td>
+                                                <td>
+                                                    ACS Controller
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input
+                                                        type="checkbox"
+                                                    />
+                                                </td>
+                                                <td>
+                                                    CONTROL ROOM IN
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input
+                                                        type="checkbox"
+                                                    />
+                                                </td>
+                                                <td>
+                                                    CONTROL ROOM OUT
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input
+                                                        type="checkbox"
+                                                    />
+                                                </td>
+                                                <td>
+                                                    MAIN GATE IN - Driver Side
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input
+                                                        type="checkbox"
+                                                    />
+                                                </td>
+                                                <td>
+                                                    MAIN GATE IN - Clener Side
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input
+                                                        type="checkbox"
+                                                    />
+                                                </td>
+                                                <td>
+                                                    MAIN GATE OUT - Driver Side
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input
+                                                        type="checkbox"
+                                                    />
+                                                </td>
+                                                <td>
+                                                    MAIN GATE OUT - Clener Side
+                                                </td>
+                                            </tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                </div>
+                       <div className="row mb-3 justify-content-center">
+                        <div className="col-12 col-md-4">
+                            <label htmlFor="logTypeSelect" className="form-label2">Log Type:</label>
+                            <select id="logTypeSelect" className="form-select">
+                                    <option value="New log">New log</option>
+                                    <option value="Log already sent to the server">Log already sent to the server</option>
+                                    <option value="All stored logs">All stored logs</option>
+                                    <option value="Period log">Period log</option>
+
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div className="row mb-3 justify-content-center">
+                        <div className="col-12 col-md-4">
+                            <label htmlFor="fromDate" className="form-label2">From:</label>
+                            <DatePicker selected={startDate} onChange={date => setStartDate(date)} className="form-control" />
+                        </div>
+                    </div>
+                    <div className="row mb-3 justify-content-center">
+                        <div className="col-12 col-md-4">
+                                <label htmlFor="toDate" className="form-label2">To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <DatePicker selected={endDate} onChange={date => setEndDate(date)} className="form-control" />
+                        </div>
+                    </div>
+                    <div className="row mb-3 justify-content-center">
+                        <div className="col-12 col-md-4 text-center">
+                            <button className="btn btn-secondary">Restore Data</button>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
             </div>
         </>
+
     );
 };
 

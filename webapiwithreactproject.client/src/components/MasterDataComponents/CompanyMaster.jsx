@@ -64,6 +64,7 @@ const CompanyMaster = () => {
             setSelectedRows([...selectedRows, srno]);
         }
     };
+
     const handleAddClick = async () => {
 
 

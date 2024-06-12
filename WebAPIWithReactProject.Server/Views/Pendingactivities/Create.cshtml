@@ -1,0 +1,73 @@
+﻿@model WebAPIWithReactProject.Server.Models.Pendingactivity
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Pendingactivity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Priority" class="control-label"></label>
+                <input asp-for="Priority" class="form-control" />
+                <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dates" class="control-label"></label>
+                <input asp-for="Dates" class="form-control" />
+                <span asp-validation-for="Dates" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cid" class="control-label"></label>
+                <input asp-for="Cid" class="form-control" />
+                <span asp-validation-for="Cid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Activitytype" class="control-label"></label>
+                <input asp-for="Activitytype" class="form-control" />
+                <span asp-validation-for="Activitytype" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Details" class="control-label"></label>
+                <input asp-for="Details" class="form-control" />
+                <span asp-validation-for="Details" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Details1" class="control-label"></label>
+                <input asp-for="Details1" class="form-control" />
+                <span asp-validation-for="Details1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ipaddress" class="control-label"></label>
+                <input asp-for="Ipaddress" class="form-control" />
+                <span asp-validation-for="Ipaddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Failedflag" class="control-label"></label>
+                <input asp-for="Failedflag" class="form-control" />
+                <span asp-validation-for="Failedflag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
