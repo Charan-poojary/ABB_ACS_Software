@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +15,12 @@ import EmployeeCatagoryMaster from './EmployeeCatagoryMaster';
 
 
 
-const Reports = () => {
+const Reports = ({ defaultLink }) => {
+
+    useEffect(() => {
+        setSelectedLink(defaultLink);
+    }, [defaultLink]);
+
     const [selectedLink, setSelectedLink] = useState(null);
 
     const handleLinkClick = (link) => {
@@ -249,6 +254,24 @@ const Reports = () => {
                                     {selectedLink === 'link8' && <DistrictMaster />}
                                     {selectedLink === 'link9' && <VillageMaster />}
                                     {selectedLink === 'link10' && <EmployeeCatagoryMaster />}
+                                    {selectedLink === 'link11' && <CompanyMaster />}
+                                    {selectedLink === 'link12' && <LocationMaster />}
+                                    {selectedLink === 'link13' && <DepartmentMaster />}
+                                    {selectedLink === 'link14' && <SubDepartmentMaster />}
+                                    {selectedLink === 'link15' && <DesignationMaster />}
+                                    {selectedLink === 'link16' && <SectionMaster />}
+                                    {selectedLink === 'link17' && <StateMaster />}
+                                    {selectedLink === 'link18' && <DistrictMaster />}
+                                    {selectedLink === 'link19' && <VillageMaster />}
+                                    {selectedLink === 'link20' && <EmployeeCatagoryMaster />}
+                                    {selectedLink === 'link21' && <CompanyMaster />}
+                                    {selectedLink === 'link22' && <LocationMaster />}
+                                    {selectedLink === 'link23' && <DepartmentMaster />}
+                                    {selectedLink === 'link24' && <SubDepartmentMaster />}
+                                    {selectedLink === 'link25' && <DesignationMaster />}
+                                    {selectedLink === 'link26' && <SectionMaster />}
+                                    {selectedLink === 'link27' && <StateMaster />}
+                                    {selectedLink === 'link28' && <DistrictMaster />}
                                 </div>
                             </div>
                         </div>

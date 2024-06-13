@@ -46,7 +46,6 @@ const App = () => {
             <Route path="/home" element={isLoggedIn ? <HomePage onLogout={handleLogout} /> : <Navigate to="/" />} />
             <Route path="/change-password" element={<ChangePasswordPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-
         </Routes>
     );
 };

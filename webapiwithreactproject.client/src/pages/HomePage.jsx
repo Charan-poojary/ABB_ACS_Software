@@ -7,7 +7,7 @@ import RealTime from '../components/RealTimeComponents/RealTime';
 import Settings from '../components/SettingsComponents/Settings';
 import Reports from '../components/ReportsComponents/Reports';
 import IconGrid from '../components/Navigation/IconGrid';
-import ForgotPasswordPage from './ForgotPasswordPage';
+import UpdatePass from './UpdatePass';
 import companyLogo from '../assets/images/Bharat_Petroleum_logo_PNG.png';
 
 
@@ -18,7 +18,8 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
     const [lastAccessTime, setLastAccessTime] = useState('');
     const [activeComponent, setActiveComponent] = useState(null);
     const [showMasterData, setShowMasterData] = useState(true);
-    const [showChangePassword, setShowChangePassword] = useState(false); 
+    const [showChangePassword, setShowChangePassword] = useState(false);
+    const [defaultLink, setDefaultLink] = useState('');
 
     useEffect(() => {
         setUsername(localStorage.getItem('username') || '');
@@ -63,50 +64,65 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
     const handleOnAddControllerClick = () => {
         setShowMasterData(true);
         setShowChangePassword(false);
+        setDefaultLink('link11');
     };
     const handleOnCreateAccessGroupClick = () => {
         setShowMasterData(true);
         setShowChangePassword(false);
+        setDefaultLink('link19');
     };
     const handleOnSendControllerSettingClick = () => {
         setShowMasterData(true);
         setShowChangePassword(false);
+        setDefaultLink('link3');
     };
     const handleOnEmployeeMasterClick = () => {
         setShowMasterData(true);
         setShowChangePassword(false);
+        setDefaultLink('link24');
     };
     const handleOnIEemployeeClick = () => {
         setShowMasterData(true);
         setShowChangePassword(false);
+        setDefaultLink('link26');
     };
     const handleOnEmployeeRegisterationClick = () => {
         setShowMasterData(true);
         setShowChangePassword(false);
+        setDefaultLink('link27');
     };
     const handleOnStatusMonitoringClick = () => {
         setShowMasterData(false);
         setShowChangePassword(false);
         setActiveComponent('realTime');
-
+        setDefaultLink('link1');
     };
     const handleOnTemplateTransferClick = () => {
         setShowMasterData(true);
         setShowChangePassword(false);
+        setDefaultLink('link21');
     };
     const handleOnFifoReportClick = () => {
         setShowMasterData(false);
         setShowChangePassword(false);
         setActiveComponent('reports');
-
+        setDefaultLink('link16');
     };
     const handleOnUpdateLicenceClick = () => {
         setShowMasterData(true);
         setShowChangePassword(false);
+        setDefaultLink('link10');
     };
+
     const handleChangePassword = () => {
         setShowChangePassword(true); 
         setShowMasterData(false); 
+        setActiveComponent(null);
+    }
+
+    const handleHomeIconClick = () => {
+        setShowMasterData(true);
+        setShowChangePassword(false);
         setActiveComponent(null);
     }
 
@@ -115,6 +131,7 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
             <NavigationBar
                 onLogout={onLogout}
                 onChangePassword={handleChangePassword}
+                onHomeIconclick={handleHomeIconClick}
             />
             {!showChangePassword && (
             <MiniNavigationBar
@@ -151,11 +168,11 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
                     onUpdateLicenceClick={handleOnUpdateLicenceClick}
                 />
             )}
-            {showChangePassword && <ForgotPasswordPage/>}
-            {showMasterData && <MasterData />}
+            {showChangePassword && <UpdatePass />}
+            {showMasterData && <MasterData defaultLink={defaultLink} />}
             {activeComponent === 'doorActions' && !showMasterData && <DoorActions />}
-            {activeComponent === 'realTime' && !showMasterData && <RealTime />}
-            {activeComponent === 'reports' && !showMasterData && <Reports />}
+            {activeComponent === 'realTime' && !showMasterData && <RealTime defaultLink={defaultLink} />}
+            {activeComponent === 'reports' && !showMasterData && <Reports defaultLink={defaultLink} />}
             {activeComponent === 'settings' && !showMasterData && <Settings />}
         </>
     );

@@ -40,7 +40,7 @@
     font-size: 0.5rem;
 }
 
-.column:hover {
+.column:hover{
     background-color: #FF0000;
     color: white;
     transform: scale(1.05);

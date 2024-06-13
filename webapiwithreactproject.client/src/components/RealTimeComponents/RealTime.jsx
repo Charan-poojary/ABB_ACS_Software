@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import RealTimeData from './RealTimeData';
 import Events from './Events';
 
-const RealTime = () => {
+const RealTime = ({ defaultLink }) => {
+
+    useEffect(() => {
+        setSelectedLink(defaultLink);
+    }, [defaultLink]);
+
     const [selectedLink, setSelectedLink] = useState(null);
 
     const handleLinkClick = (link) => {

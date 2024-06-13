@@ -1,0 +1,64 @@
+﻿@model WebAPIWithReactProject.Server.Models.Mastercardinventory
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Mastercardinventory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Cardid" />
+            <div class="form-group">
+                <label asp-for="Cardno" class="control-label"></label>
+                <input asp-for="Cardno" class="form-control" />
+                <span asp-validation-for="Cardno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cardformat" class="control-label"></label>
+                <input asp-for="Cardformat" class="form-control" />
+                <span asp-validation-for="Cardformat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Noformat" class="control-label"></label>
+                <input asp-for="Noformat" class="form-control" />
+                <span asp-validation-for="Noformat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Uniqueid" class="control-label"></label>
+                <input asp-for="Uniqueid" class="form-control" />
+                <span asp-validation-for="Uniqueid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Forvisitor" class="control-label"></label>
+                <input asp-for="Forvisitor" class="form-control" />
+                <span asp-validation-for="Forvisitor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CardAssignedOn" class="control-label"></label>
+                <input asp-for="CardAssignedOn" class="form-control" />
+                <span asp-validation-for="CardAssignedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

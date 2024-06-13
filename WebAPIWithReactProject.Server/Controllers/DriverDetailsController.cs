@@ -46,6 +46,7 @@ namespace WebAPIWithReactProject.Server.Controllers
 
 
 
+
         // POST: api/DriverDetails
 
         [HttpPost]
@@ -120,6 +121,22 @@ namespace WebAPIWithReactProject.Server.Controllers
 
             return NoContent();
         }
+
+        // GET: api/DriverDetails/GetEmployeeDetailsByCardno/{cardno}
+        [HttpGet("GetEmployeeDetailsByCardno/{cardno}")]
+        public async Task<ActionResult<string>> GetEmployeeDetailsByCardno(string cardno)
+        {
+            var driverDetail = await _context.DriverDetails.FirstOrDefaultAsync(e => e.Cardno == cardno);
+
+            if (driverDetail == null)
+            {
+                return NotFound("Employee not found.");
+            }
+
+            string result = $"Driver - {driverDetail.Empcode} - {driverDetail.Name}";
+            return Ok(result);
+        }
+
 
 
         // Search: api/DriverDetails/Search

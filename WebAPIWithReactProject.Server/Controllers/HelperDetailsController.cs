@@ -45,6 +45,22 @@ namespace WebAPIWithReactProject.Server.Controllers
         }
 
 
+        // GET: api/HelperDetails/GetEmployeeDetailsByCardno/{cardno}
+        [HttpGet("GetEmployeeDetailsByCardno/{cardno}")]
+        public async Task<ActionResult<string>> GetEmployeeDetailsByCardno(string cardno)
+        {
+            var helperDetail = await _context.HelperDetails.FirstOrDefaultAsync(e => e.Cardno == cardno);
+
+            if (helperDetail == null)
+            {
+                return NotFound("Employee not found.");
+            }
+
+            string result = $"Helper - {helperDetail.Empcode} - {helperDetail.Name}";
+            return Ok(result);
+        }
+
+
 
         // POST: api/HelperDetails
 

@@ -21,6 +21,7 @@ namespace WebAPIWithReactProject.Server.Controllers
             _context = context;
         }
 
+
         // GET: api/Employees
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>>GetEmployees()
@@ -43,6 +44,23 @@ namespace WebAPIWithReactProject.Server.Controllers
             var exists = await _context.Employees.AnyAsync(e => e.Enrollno == enrollno);
             return Ok(new { exists });
         }
+
+        // GET: api/Employees/GetEmployeeDetailsByCardno/{cardno}
+        [HttpGet("GetEmployeeDetailsByCardno/{cardno}")]
+        public async Task<ActionResult<string>> GetEmployeeDetailsByCardno(string cardno)
+        {
+            var emp = await _context.Employees.FirstOrDefaultAsync(e => e.Cardno == cardno);
+
+            if (emp == null)
+            {
+                return NotFound("Employee not found.");
+            }
+
+            string result = $"Employee - {emp.Empcode} - {emp.Fname}";
+            return Ok(result);
+        }
+
+
 
         // POST: api/Employees/Add
         [HttpPost("Add")]

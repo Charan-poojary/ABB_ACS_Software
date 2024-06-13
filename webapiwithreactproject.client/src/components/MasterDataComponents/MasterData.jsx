@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -24,10 +24,21 @@ import DriverMaster from './Employee/DriverMaster';
 import Vehicles from './Vehicle/Vehicles';
 import RegisterVehicles from './Vehicle/RegisterVehicles';
 import UnRegisterVehicles from './Vehicle/UnregisterVehicles';
+import CardInventory from './CardControllerData/CardInventory';
+import ImportCards from './CardControllerData/ImportCards';
+import TimeZone from './CardControllerData/TimeZone';
+import AccessTime from './CardControllerData/AccessTime';
+import HolidayMaster from './CardControllerData/HolidayMaster';
+import HolidayGroup from './CardControllerData/HolidayGroup';
 
 
-const MasterData = () => {
+const MasterData = ({defaultLink }) => {
     const [selectedLink, setSelectedLink] = useState();
+
+    useEffect(() => {
+        setSelectedLink(defaultLink);
+    }, [defaultLink]);
+
     const handleLinkClick = (link) => {
         setSelectedLink(link);
     };
@@ -208,12 +219,12 @@ const MasterData = () => {
                                     {selectedLink === 'link10' && <EmployeeCatagoryMaster />}
                                     {selectedLink === 'link11' && <ControllerReader />}
                                     {selectedLink === 'link12' && <CardFormats />}
-                                    {selectedLink === 'link13' && <DepartmentMaster />}
-                                    {selectedLink === 'link14' && <SubDepartmentMaster />}
-                                    {selectedLink === 'link15' && <DesignationMaster />}
-                                    {selectedLink === 'link16' && <SectionMaster />}
-                                    {selectedLink === 'link17' && <StateMaster />}
-                                    {selectedLink === 'link18' && <DistrictMaster />}
+                                    {selectedLink === 'link13' && <CardInventory />}
+                                    {selectedLink === 'link14' && <ImportCards />}
+                                    {selectedLink === 'link15' && <TimeZone />}
+                                    {selectedLink === 'link16' && <AccessTime />}
+                                    {selectedLink === 'link17' && <HolidayMaster />}
+                                    {selectedLink === 'link18' && <HolidayGroup />}
                                     {selectedLink === 'link19' && <VillageMaster />}
                                     {selectedLink === 'link20' && <EmployeeCatagoryMaster />}
                                     {selectedLink === 'link21' && <DistrictMaster />}
