@@ -30,6 +30,8 @@ import TimeZone from './CardControllerData/TimeZone';
 import AccessTime from './CardControllerData/AccessTime';
 import HolidayMaster from './CardControllerData/HolidayMaster';
 import HolidayGroup from './CardControllerData/HolidayGroup';
+import AccessGroup from './CardControllerData/AccessGroup';
+import ControllerGroup from './CardControllerData/ControllerGroup';
 
 
 const MasterData = ({defaultLink }) => {
@@ -130,7 +132,7 @@ const MasterData = ({defaultLink }) => {
                                             <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
-                                                Card Contrller Data
+                                                Controller Setup Data
                                             </Link>
                                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                                 <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link11')}>
@@ -225,8 +227,8 @@ const MasterData = ({defaultLink }) => {
                                     {selectedLink === 'link16' && <AccessTime />}
                                     {selectedLink === 'link17' && <HolidayMaster />}
                                     {selectedLink === 'link18' && <HolidayGroup />}
-                                    {selectedLink === 'link19' && <VillageMaster />}
-                                    {selectedLink === 'link20' && <EmployeeCatagoryMaster />}
+                                    {selectedLink === 'link19' && <AccessGroup />}
+                                    {selectedLink === 'link20' && <ControllerGroup />}
                                     {selectedLink === 'link21' && <DistrictMaster />}
                                     {selectedLink === 'link22' && <VillageMaster />}
                                     {selectedLink === 'link23' && <EmployeeCatagoryMaster />}

@@ -1,0 +1,54 @@
+﻿@model WebAPIWithReactProject.Server.Models.Masterag
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Masterag</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Agname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Agname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Compid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Compid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Locationid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Locationid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Uploadedyn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Uploadedyn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Defaultflag)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Defaultflag)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Agid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

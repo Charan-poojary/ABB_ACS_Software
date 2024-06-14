@@ -1,0 +1,60 @@
+﻿@model WebAPIWithReactProject.Server.Models.Masterdg
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Masterdg</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dgname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dgname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Compid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Compid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Locationid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Locationid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Uploadedyn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Uploadedyn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fireevent)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fireevent)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Firecid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Firecid)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Dgid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
