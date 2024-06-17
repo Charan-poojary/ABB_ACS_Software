@@ -1,0 +1,269 @@
+﻿@model IEnumerable<WebAPIWithReactProject.Server.Models.Mastercontroller>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ctype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.V100cnt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.V100rcnt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Port)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Readercnt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Locationid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ciid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Macaddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ipchange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cntuploadedyn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastconnected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Normalaccess)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Extendedaccess)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Minopen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doorheld)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doorheldyn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.V200cnt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.V300cnt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fversion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastconnecttime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cusername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pushmode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Onlyattendance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capsnapshot)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminalid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Firmwareversion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timezone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Authmode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timesync)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Globalpassback)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cardreadformat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Serialformat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Isenroller)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ctype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.V100cnt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.V100rcnt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Port)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Readercnt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Compid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locationid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ciid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Macaddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ipchange)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cntuploadedyn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastconnected)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Normalaccess)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Extendedaccess)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minopen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doorheld)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doorheldyn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.V200cnt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.V300cnt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fversion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastconnecttime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cusername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pushmode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Onlyattendance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capsnapshot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Terminalid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firmwareversion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timezone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Authmode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timesync)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Globalpassback)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cardreadformat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serialformat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Isenroller)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Cid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Cid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Cid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

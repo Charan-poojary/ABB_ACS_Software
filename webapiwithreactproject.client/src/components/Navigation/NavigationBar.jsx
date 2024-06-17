@@ -4,7 +4,7 @@ import logo from '../../assets/images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faLock, faDesktop, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
-const NavigationBar = ({ onLogout, onChangePassword, onHomeIconclick }) => {
+const NavigationBar = ({ onLogout, onChangePassword, onHomeIconclick, onACSIconclick }) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
@@ -31,7 +31,7 @@ const NavigationBar = ({ onLogout, onChangePassword, onHomeIconclick }) => {
                                 <span className="icon-text">Systems</span>
                             </Link>
                             <ul className="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <li><Link className="dropdown-item bg-light text-dark mt-2 mb-1" to="#">Access Control</Link></li>
+                                <li><Link className="dropdown-item bg-light text-dark mt-2 mb-1" onClick={onACSIconclick} style={{ cursor: 'pointer' }}>Access Control</Link></li>
                                 <li><Link className="dropdown-item bg-light text-dark mb-1" to="#">Attendance System</Link></li>
                                 <li><Link className="dropdown-item bg-light text-dark" to="#">VMS</Link></li>
                             </ul>

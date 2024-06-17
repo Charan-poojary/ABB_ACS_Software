@@ -32,6 +32,10 @@ import HolidayMaster from './CardControllerData/HolidayMaster';
 import HolidayGroup from './CardControllerData/HolidayGroup';
 import AccessGroup from './CardControllerData/AccessGroup';
 import ControllerGroup from './CardControllerData/ControllerGroup';
+import TemplateTransfer from './CardControllerData/TemplateTransfer';
+import DriverTemplateTransfer from './CardControllerData/DriverTemplateTransfer';
+import HelperTemplateTransfer from './CardControllerData/HelperTemplateTransfer';
+import ControllerSetupData from './CardControllerData/ControllerSetupData';
 
 
 const MasterData = ({defaultLink }) => {
@@ -229,9 +233,9 @@ const MasterData = ({defaultLink }) => {
                                     {selectedLink === 'link18' && <HolidayGroup />}
                                     {selectedLink === 'link19' && <AccessGroup />}
                                     {selectedLink === 'link20' && <ControllerGroup />}
-                                    {selectedLink === 'link21' && <DistrictMaster />}
-                                    {selectedLink === 'link22' && <VillageMaster />}
-                                    {selectedLink === 'link23' && <EmployeeCatagoryMaster />}
+                                    {selectedLink === 'link21' && <TemplateTransfer />}
+                                    {selectedLink === 'link22' && <DriverTemplateTransfer />}
+                                    {selectedLink === 'link23' && <HelperTemplateTransfer />}
                                     {selectedLink === 'link24' && <EmployeeMaster />}
                                     {selectedLink === 'link25' && <EmployeeClassification />}
                                     {selectedLink === 'link26' && <ImportExportEmployees />}
@@ -242,6 +246,8 @@ const MasterData = ({defaultLink }) => {
                                     {selectedLink === 'link31' && <Vehicles />}
                                     {selectedLink === 'link32' && <RegisterVehicles />}
                                     {selectedLink === 'link33' && <UnRegisterVehicles />}
+                                    {selectedLink === 'link34' && <ControllerSetupData />}
+
                                 </div>
                             </div>
                         </div>

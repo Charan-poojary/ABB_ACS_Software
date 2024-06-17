@@ -1,0 +1,261 @@
+﻿@model WebAPIWithReactProject.Server.Models.Mastercontroller
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Mastercontroller</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ctype)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ctype)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.V100cnt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.V100cnt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.V100rcnt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.V100rcnt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ip)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ip)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Port)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Port)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Readercnt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Readercnt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Compid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Compid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Locationid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Locationid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Flag)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flag)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ciid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ciid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Macaddress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Macaddress)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ipchange)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ipchange)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cntuploadedyn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cntuploadedyn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lastconnected)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lastconnected)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Normalaccess)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Normalaccess)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Extendedaccess)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Extendedaccess)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Minopen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Minopen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Doorheld)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Doorheld)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Doorheldyn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Doorheldyn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.V200cnt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.V200cnt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.V300cnt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.V300cnt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fversion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fversion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lastconnecttime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lastconnecttime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cusername)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cusername)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cpass)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cpass)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pushmode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pushmode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Onlyattendance)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Onlyattendance)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Capsnapshot)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Capsnapshot)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Terminalid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Terminalid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Firmwareversion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Firmwareversion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Timezone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Timezone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Authmode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Authmode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Timesync)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Timesync)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Globalpassback)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Globalpassback)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cardreadformat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cardreadformat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Serialformat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Serialformat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Isenroller)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Isenroller)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Cid" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

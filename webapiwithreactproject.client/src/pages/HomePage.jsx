@@ -74,7 +74,7 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
     const handleOnSendControllerSettingClick = () => {
         setShowMasterData(true);
         setShowChangePassword(false);
-        setDefaultLink('link3');
+        setDefaultLink('link34');
     };
     const handleOnEmployeeMasterClick = () => {
         setShowMasterData(true);
@@ -109,9 +109,10 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
         setDefaultLink('link16');
     };
     const handleOnUpdateLicenceClick = () => {
-        setShowMasterData(true);
+        setShowMasterData(false);
         setShowChangePassword(false);
-        setDefaultLink('link10');
+        setActiveComponent('settings');
+        setDefaultLink('link8');
     };
 
     const handleChangePassword = () => {
@@ -126,12 +127,19 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
         setActiveComponent(null);
     }
 
+    const handleACSIconClick = () => {
+        setShowMasterData(true);
+        setShowChangePassword(false);
+        setActiveComponent(null);
+    }
+
     return (
         <>
             <NavigationBar
                 onLogout={onLogout}
                 onChangePassword={handleChangePassword}
                 onHomeIconclick={handleHomeIconClick}
+                onACSIconclick={handleACSIconClick }
             />
             {!showChangePassword && (
             <MiniNavigationBar
@@ -173,7 +181,7 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
             {activeComponent === 'doorActions' && !showMasterData && <DoorActions />}
             {activeComponent === 'realTime' && !showMasterData && <RealTime defaultLink={defaultLink} />}
             {activeComponent === 'reports' && !showMasterData && <Reports defaultLink={defaultLink} />}
-            {activeComponent === 'settings' && !showMasterData && <Settings />}
+            {activeComponent === 'settings' && !showMasterData && <Settings defaultLink={defaultLink} />}
         </>
     );
 };

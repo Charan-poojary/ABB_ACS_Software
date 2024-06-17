@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -9,11 +9,19 @@ import SuperAdmin from './UserManagement/SuperAdmin';
 import SectionAdmin from './UserManagement/SectionAdmin';
 import Employee from './UserManagement/Employee';
 import HierarchyAdmin from './UserManagement/HierarchyAdmin';
+import ImportLicenseFile from './ImportLicenseFile';
 
 
 
-const Settings = () => {
+const Settings = ({ defaultLink }) => {
+
+    useEffect(() => {
+        setSelectedLink(defaultLink);
+    }, [defaultLink]);
+
+
     const [selectedLink, setSelectedLink] = useState(null);
+
 
     const handleLinkClick = (link) => {
 
@@ -79,6 +87,7 @@ const Settings = () => {
                                     {selectedLink === 'link5' && <PendingActivities />}
                                     {selectedLink === 'link6' && <RestoreDeviceLogs />}
                                     {selectedLink === 'link7' && <FingerQualitySetting />}
+                                    {selectedLink === 'link8' && <ImportLicenseFile />}
                                 </div>
                             </div>
                         </div>
