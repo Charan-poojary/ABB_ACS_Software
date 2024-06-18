@@ -43,6 +43,7 @@ const NavigationBar = ({ onLogout, onChangePassword, onHomeIconclick, onACSIconc
                     </div>
                 </div>
             </div>
+
         </nav>
     );
 };

@@ -1,4 +1,6 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
 import NavigationBar from '../components/Navigation/NavigationBar';
 import MiniNavigationBar from '../components/Navigation/MiniNavigationBar';
 import MasterData from '../components/MasterDataComponents/MasterData';
@@ -133,6 +135,10 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
         setActiveComponent(null);
     }
 
+    const handleRefresh = () => {
+        window.location.reload();
+    }
+
     return (
         <>
             <NavigationBar
@@ -155,7 +161,9 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
                     <div>
                         <h2 className="display-6 ms-md-2">Welcome, <span className="text-danger">{username}</span></h2>
                         <p className="h6 ms-md-3">Last Login: <span className="text-primary">{loginTime}</span></p>
-                        <p className="h6 ms-md-3">Access Service Status: <span className="text-danger">{lastAccessTime}</span></p>
+                        <p className="h6 ms-md-3">Access Service Status: <span className="text-danger">{loginTime}</span> <span> <button className="custom-btn secondary" onClick={handleRefresh}>
+                            <FontAwesomeIcon icon={faSync} />
+                        </button></span></p>
                     </div>
                     <div>
                         <img src={companyLogo} alt="Company Logo" className="img-fluid" style={{ maxWidth: '250px' }} />
