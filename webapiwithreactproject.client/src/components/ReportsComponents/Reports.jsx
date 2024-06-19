@@ -49,111 +49,111 @@ const Reports = ({ defaultLink }) => {
                                 <div className="sidebar">
                                     <ul className="nav flex-column">
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link1')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link1')}>
                                                 <FontAwesomeIcon icon={faCaretRight}/>
                                                 &nbsp;
                                                 Employee Access Master
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link2')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link2')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Access Granted
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link3')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link3')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Access Denied
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link4')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link4')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Access Transactions
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link5')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link5')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Active/Expired/Inactive Cards in the system
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link6')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link6')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Audit Log
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link7')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link7')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Company wise Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link8')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link8')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Category wise Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link9')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link9')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Contractore manpower Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link10')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link10')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Current Employees Inside Plant
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link11')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link11')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Date From To Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link12')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link12')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Department wise Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link13')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link13')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Date of Birth/AGE Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link14')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link14')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Daily Manpower Report(First Punch and Last Punch)
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link15')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link15')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Employee Blacklist
                                             </Link>
                                         </li>
-                                        <li className="nav-item dropdown">
+{/*                                        <li className="nav-item dropdown">
                                             <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
@@ -163,93 +163,93 @@ const Reports = ({ defaultLink }) => {
                                                 <li><Link className="dropdown-item" to="/home">Settings</Link></li>
                                                 <li><Link className="dropdown-item" to="/home" >Generate Reports</Link></li>
                                             </ul>
-                                        </li>
+                                        </li>*/}
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link16')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link16')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 First In Last Out
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link17')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link17')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Gate Wise Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link18')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link18')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 ManPower Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link19')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link19')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Monthly Manpower Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link20')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link20')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Pin Bypass
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link21')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link21')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Picture Transactions Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link22')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link22')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 State Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link23')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link23')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Vehicle Access Event
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link24')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link24')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Vehicle Master Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link25')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link25')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Valid Gate Pass Record Report 
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link26')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link26')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Door Access Report
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link27')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link27')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Driver Helper
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link28')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link28')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Driver Helper Unregisteration

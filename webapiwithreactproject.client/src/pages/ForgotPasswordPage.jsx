@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import '../assets/styles/Login.css';
 import emailjs from 'emailjs-com';
 import config from '../config';
+import ABB_Video from '../assets/Videos/banner.mp4';
+
 
 const ForgotPasswordPage = () => {
     const [email, setEmail] = useState('');
@@ -147,6 +149,11 @@ const ForgotPasswordPage = () => {
 
     return (
         <>
+            <div className="video-background">
+                <video autoPlay loop muted style={{ opacity: 0.7 }}>
+                    <source src={ABB_Video} type="video/mp4" />
+                </video>
+                <div className="login-container">
             <div className="container">
                 <div className="card">
                     <div className="form">
@@ -159,10 +166,8 @@ const ForgotPasswordPage = () => {
                                 <div className="flogo min-img text-center justify-content-center">
                                     <img src={logo} alt="Logo" />
                                 </div>
-                                <br />
                                 <h4>Forgot Your Password? </h4>
                             </div>
-
                             <form onSubmit={handleSubmit}>
                                 {showEmailInput && (
                                     <div className="input_text">
@@ -209,7 +214,10 @@ const ForgotPasswordPage = () => {
                         </div>
                     </div>
                 </div>
+                    </div>
+                </div>
             </div>
+
         </>
     );
 }

@@ -16,6 +16,28 @@ body {
     font-size:0.8rem;
 }
 
+.navi {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.side-navi{
+    color:black;
+}
+
+.side-navi .fa-caret-right {
+    color: black;
+}
+
+.side-navi.active {
+    color: var(--bs-primary);
+}
+
+.side-navi.active .fa-caret-right {
+    color: var(--bs-primary);
+}
+
 .nav-link:hover .icon-text {
     opacity: 1;
 }

@@ -62,35 +62,35 @@ const MasterData = ({defaultLink }) => {
                                 <div className="sidebar">
                                     <ul className="nav flex-column">
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link1')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link1')}>
                                                 <FontAwesomeIcon icon={faCaretRight}/>
                                                 &nbsp;
                                                 Company
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link2')}>
+                                                <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link2')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Location
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link3')}>
+                                                <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link3')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Department
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link4')}>
+                                                <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link4')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Sub-Department
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link5')}>
+                                                <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link5')}>
 
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
@@ -98,112 +98,112 @@ const MasterData = ({defaultLink }) => {
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link6')}>
+                                                <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link6')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Section
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link7')}>
+                                                <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link7')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 State
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link8')}>
+                                                <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link8')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 District
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link9')}>
+                                                <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link9')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Village
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link10')}>
+                                                <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link10')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Employee Category
                                             </Link>
                                         </li>
                                         <li className="nav-item dropdown">
-                                            <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <Link className="nav-link side-navi dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Controller Setup Data
                                             </Link>
                                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link11')}>
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link11')}>
                                                     <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Controller-Reader</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link12')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link12')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Card Formats</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link13')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link13')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Card Inventory</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link14')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link14')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Import Cards</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link15')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link15')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Time Zone</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link16')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link16')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Access Time</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link17')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link17')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Holiday Master</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link18')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link18')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Holiday Group</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link19')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link19')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Access Group</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link20')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link20')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Controller Group</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link21')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link21')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Template Transfer</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link22')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link22')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Driver Template Transfer</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link23')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link23')}><FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;Helper Template Transfer</Link></li>
                                             </ul>
                                         </li>
                                         <li className="nav-item dropdown">
-                                            <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <Link className="nav-link side-navi dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Employee
                                             </Link>
                                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link24')}>
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link24')}>
                                                     <FontAwesomeIcon icon={faCaretRight} />
                                                     &nbsp;Employee Master</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link25')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link25')}><FontAwesomeIcon icon={faCaretRight} />
                                                     &nbsp;Employee Classification</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link26')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link26')}><FontAwesomeIcon icon={faCaretRight} />
                                                     &nbsp;Import/Export Employees</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link27')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link27')}><FontAwesomeIcon icon={faCaretRight} />
                                                     &nbsp;Employee Registeration</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link28')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link28')}><FontAwesomeIcon icon={faCaretRight} />
                                                     &nbsp;Import Virdi Templates</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link29')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link29')}><FontAwesomeIcon icon={faCaretRight} />
                                                     &nbsp;Helper Master</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link30')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link30')}><FontAwesomeIcon icon={faCaretRight} />
                                                     &nbsp;Driver Master</Link></li>
                                             </ul>
                                         </li>
                                         <li className="nav-item dropdown">
-                                            <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <Link className="nav-link side-navi dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Vehicle
                                             </Link>
                                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link31')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link31')}><FontAwesomeIcon icon={faCaretRight} />
                                                     &nbsp;Vehicles</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link32')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link32')}><FontAwesomeIcon icon={faCaretRight} />
                                                     &nbsp;Register Vehicles</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link33')}><FontAwesomeIcon icon={faCaretRight} />
+                                                    <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link33')}><FontAwesomeIcon icon={faCaretRight} />
                                                     &nbsp;Unregister Vehicles</Link></li>
                                             </ul>
                                         </li>

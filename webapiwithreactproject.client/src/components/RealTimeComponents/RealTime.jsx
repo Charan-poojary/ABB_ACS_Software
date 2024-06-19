@@ -29,14 +29,14 @@ const RealTime = ({ defaultLink }) => {
                                 <div className="sidebar">
                                     <ul className="nav flex-column">
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link1')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link1')}>
                                                 <FontAwesomeIcon icon={faCaretRight}/>
                                                 &nbsp;
                                                 Real Time
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link2')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link2')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Events

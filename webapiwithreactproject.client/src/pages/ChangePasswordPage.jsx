@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import logo from '../assets/images/logo.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../assets/styles/Login.css';
+import ABB_Video from '../assets/Videos/banner.mp4';
+
 
 const ChangePasswordPage = () => {
     const [password, setPassword] = useState('');
@@ -72,6 +74,11 @@ const ChangePasswordPage = () => {
 
     return (
         <>
+            <div className="video-background">
+                <video autoPlay loop muted style={{ opacity: 0.7 }}>
+                    <source src={ABB_Video} type="video/mp4" />
+                </video>
+                <div className="login-container">
             <div className="container">
                 <div className="card">
                     <div className="form">
@@ -108,7 +115,11 @@ const ChangePasswordPage = () => {
                         </div>
                     </div>
                 </div>
+                    </div>
+                </div>
+
             </div>
+
         </>
     );
 }

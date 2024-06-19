@@ -161,7 +161,7 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
                     <div>
                         <h2 className="display-6 ms-md-2">Welcome, <span className="text-danger">{username}</span></h2>
                         <p className="h6 ms-md-3">Last Login: <span className="text-primary">{loginTime}</span></p>
-                        <p className="h6 ms-md-3">Access Service Status: <span className="text-danger">{loginTime}</span> <span> <button className="custom-btn secondary" onClick={handleRefresh}>
+                        <p className="h6 ms-md-3">Access Service Status: <span className="text-danger">{lastAccessTime}</span> <span> <button className="custom-btn secondary" onClick={handleRefresh}>
                             <FontAwesomeIcon icon={faSync} />
                         </button></span></p>
                     </div>
@@ -190,6 +190,13 @@ const HomePage = ({ onLogout, onAddControllerClick, onCreateAccessGroupClick, on
             {activeComponent === 'realTime' && !showMasterData && <RealTime defaultLink={defaultLink} />}
             {activeComponent === 'reports' && !showMasterData && <Reports defaultLink={defaultLink} />}
             {activeComponent === 'settings' && !showMasterData && <Settings defaultLink={defaultLink} />}
+
+            {/* Footer Section */}
+            <footer className="footer mt-auto py-3 bg-dark text-white">
+                <div className="container-fluid text-center">
+                    <p>&copy; {new Date().getFullYear()} ABB. All rights reserved.</p>
+                </div>
+            </footer>
         </>
     );
 };

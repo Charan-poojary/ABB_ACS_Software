@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using WebAPIWithReactProject.Server.Models;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace WebAPIWithReactProject.Server.Controllers
 {
@@ -59,6 +60,14 @@ namespace WebAPIWithReactProject.Server.Controllers
             return Ok(new { exists = false });
         }
 
+
+
+        [HttpGet("check-email/{email}")]
+        public async Task<IActionResult> CheckUserEmail(string email)
+        {
+            var exists = await _context.Admins.AnyAsync(cm => cm.Email == email);
+            return Ok(new { exists });
+        }
 
 
         // GET : api/Admin/by-credentials?usernameOrEmail=ram&password=1234

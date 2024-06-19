@@ -39,34 +39,34 @@ const Settings = ({ defaultLink }) => {
                                 <div className="sidebar">
                                     <ul className="nav flex-column">
                                         <li className="nav-item dropdown">
-                                            <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <Link className="nav-link side-navi dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 User Management
                                             </Link>
                                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link1')}>Super Admin</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link2')}>Section Admin</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link3')}>Employee</Link></li>
-                                                <li><Link className="dropdown-item" to="/home" onClick={() => handleLinkClick('link4')}>Hierarchy Admin</Link></li>
+                                                <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link1')}><FontAwesomeIcon icon={faCaretRight} />&nbsp;Super Admin</Link></li>
+                                                <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link2')}><FontAwesomeIcon icon={faCaretRight} />&nbsp;Section Admin</Link></li>
+                                                <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link3')}><FontAwesomeIcon icon={faCaretRight} />&nbsp;Employee</Link></li>
+                                                <li><Link className="dropdown-item side-navi" to="/home" onClick={() => handleLinkClick('link4')}><FontAwesomeIcon icon={faCaretRight} />&nbsp;Hierarchy Admin</Link></li>
                                             </ul>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link5')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link5')}>
                                                 <FontAwesomeIcon icon={faCaretRight}/>
                                                 &nbsp;
                                                 Pending Activities
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link6')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link6')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Restore Device Logs
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="#" onClick={() => handleLinkClick('link7')}>
+                                            <Link className="nav-link side-navi" to="#" onClick={() => handleLinkClick('link7')}>
                                                 <FontAwesomeIcon icon={faCaretRight} />
                                                 &nbsp;
                                                 Finger Quality Setting

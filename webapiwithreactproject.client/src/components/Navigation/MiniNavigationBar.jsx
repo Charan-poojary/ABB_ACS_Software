@@ -37,19 +37,19 @@ const MiniNavigationBar = ({ onMasterDataClick, onDoorActionsClick, onRealTimeCl
             <div className="collapse navbar-collapse justify-content-center" id="navbarNav1">
                 <ul className="nav navbar-nav nav-tabs">
                     <li className="nav-item">
-                        <a className={`nav-link ms-2 ${activeLink === 'masterData' ? 'active' : ''}`} onClick={handleMasterDataClick} href="#">Master Data</a>
+                        <a className={`nav-link ms-2 ${activeLink === 'masterData' ? 'active text-danger' : ''}`} onClick={handleMasterDataClick} href="#">Master Data</a>
                     </li>
                     <li className="nav-item">
-                        <a className={`nav-link ms-2 ${activeLink === 'doorActions' ? 'active' : ''}`} onClick={handleDoorActionsClick} href="#">Door Actions</a>
+                        <a className={`nav-link ms-2 ${activeLink === 'doorActions' ? 'active text-danger' : ''}`} onClick={handleDoorActionsClick} href="#">Door Actions</a>
                     </li>
                     <li className="nav-item">
-                    <a className={`nav-link ms-2 ${activeLink === 'realTime' ? 'active' : ''}`} onClick={handleRealTimeClick} href="#">Real Time</a>
+                        <a className={`nav-link ms-2 ${activeLink === 'realTime' ? 'active text-danger' : ''}`} onClick={handleRealTimeClick} href="#">Real Time</a>
                     </li>
                     <li className="nav-item">
-                        <a className={`nav-link ms-2 ${activeLink === 'reports' ? 'active' : ''}`} onClick={handleReportsClick} href="#">Reports</a>
+                        <a className={`nav-link ms-2 ${activeLink === 'reports' ? 'active text-danger' : ''}`} onClick={handleReportsClick} href="#">Reports</a>
                     </li>
                     <li className="nav-item">
-                    <a className={`nav-link ms-2 ${activeLink === 'settings' ? 'active' : ''}`} onClick={handleSettingsClick} href="#">Settings</a>
+                        <a className={`nav-link ms-2 ${activeLink === 'settings' ? 'active text-danger' : ''}`} onClick={handleSettingsClick} href="#">Settings</a>
                     </li>
                 </ul>
             </div>

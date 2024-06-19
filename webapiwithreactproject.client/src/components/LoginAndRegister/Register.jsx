@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import '../../assets/styles/Register.css';
+import ABB_Video from '../../assets/Videos/banner.mp4';
+
 
 const Register = () => {
     const navigate = useNavigate();
@@ -69,6 +71,17 @@ const Register = () => {
         }
 
         try {
+            // Check if user with same email already exists
+            const checkResponse = await fetch(`http://localhost:5213/api/Admin/check-email/${email}`);
+            if (!checkResponse.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const checkData = await checkResponse.json();
+            if (checkData.exists) {
+                setError('User with this email already exists,Please try some other email.');
+                return;
+            }
+
             const response = await fetch('http://localhost:5213/api/Admin', {
                 method: 'POST',
                 headers: {
@@ -99,6 +112,11 @@ const Register = () => {
 
     return (
         <>
+            <div className="video-background">
+                <video autoPlay loop muted style={{ opacity: 0.7 }}>
+                    <source src={ABB_Video} type="video/mp4" />
+                </video>
+                <div className="login-container">
             <div className="container">
                 <div className="card">
                     <div className="form">
@@ -206,6 +224,8 @@ const Register = () => {
                             {error && <div className="alert alert-danger">{error}</div>}
                             {successMessage && <div className="alert alert-success">{successMessage}</div>}
                         </div>
+                    </div>
+                </div>
                     </div>
                 </div>
             </div>
