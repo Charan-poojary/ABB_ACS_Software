@@ -23,10 +23,21 @@ const Login = ({ onLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!uname || !pass) {
+
+        if (!uname && !pass) {
             setError('Fields cannot be empty');
             return;
         }
+
+        if (!uname) {
+            setError('Username cannot be empty');
+            return;
+        }
+        if (!pass) {
+            setError('Password cannot be empty');
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:5213/api/Admin/by-credentials?usernameOrEmail=${uname}&password=${pass}`);
             const data = await response.json();
@@ -63,7 +74,7 @@ const Login = ({ onLogin }) => {
 
                             <div className="right-side">
                                 <div className="register">
-                                    <p>Not a member? <Link to="/register">Register Now</Link></p>
+                                    <p>New User ? <Link to="/register">Register Now</Link></p>
                                 </div>
 
                                 <div className="hello">

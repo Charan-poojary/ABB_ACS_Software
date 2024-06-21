@@ -81,7 +81,7 @@ const DesignationMaster = () => {
                     throw new Error('Network response was not ok');
                 }
 
-                setSuccessMessage('New Location added successfully');
+                setSuccessMessage('New Designation added successfully');
                 setNewDesignationMaster({
                     srNo: '',
                     designation: '',

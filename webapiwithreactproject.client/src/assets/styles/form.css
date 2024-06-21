@@ -43,6 +43,28 @@ input[type="text"] {
     border: 1px solid #343a40;
 }
 
+input[type="number"] {
+    height: 45px;
+    width: 100%;
+    border: none;
+    outline: 0;
+    padding: 0 10px;
+    font-size: 13px;
+    border-radius: 10px;
+    border: 1px solid #343a40;
+}
+
+input[type="email"] {
+    height: 45px;
+    width: 100%;
+    border: none;
+    outline: 0;
+    padding: 0 10px;
+    font-size: 13px;
+    border-radius: 10px;
+    border: 1px solid #343a40;
+}
+
 input[type="password"] {
     height: 45px;
     width: 100%;

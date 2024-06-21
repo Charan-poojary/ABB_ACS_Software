@@ -157,17 +157,6 @@ const DepartmentMaster = () => {
         }
 
         try {
-            // Check if department exists
-            const checkResponse = await fetch(`http://localhost:5213/api/Departments/CheckDepartments/${editedDepartmentMaster.deptName}`);
-            if (!checkResponse.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const checkData = await checkResponse.json();
-            if (checkData.exists) {
-                setError('Department already exists.');
-                return;
-            }
-            else {
                 const response = await fetch(`http://localhost:5213/api/Departments/${editedDepartmentMaster.srNo}`, {
                     method: 'PUT',
                     headers: {
@@ -188,7 +177,6 @@ const DepartmentMaster = () => {
                     srNo: '',
                     deptName: '',
                 });
-            }
             setTimeout(() => {
                 const editModalElement1 = document.getElementById('editModal');
                 const editModalInstance1 = bootstrap.Modal.getInstance(editModalElement1);

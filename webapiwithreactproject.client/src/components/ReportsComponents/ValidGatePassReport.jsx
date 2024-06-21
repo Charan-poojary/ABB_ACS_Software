@@ -1,21 +1,25 @@
-import React, { useState, useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../../assets/styles/fetchEmployee.css';
+import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css';
+import $ from 'jquery';
+import 'bootstrap-datepicker';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTrash, faSync } from '@fortawesome/free-solid-svg-icons';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
-import * as XLSX from 'xlsx';
-import { saveAs } from 'file-saver';
+import { faSync, faCalendar, faClock } from '@fortawesome/free-solid-svg-icons';
 
-const EmployeeAccessMaster = () => {
+const ValidGatePassReport = () => {
+
     const [EmployeeMasters, setEmployeeMasters] = useState([]);
     const [allEmployeeMasters, setAllEmployeeMasters] = useState([]);
     const [selectedRows, setSelectedRows] = useState([]);
-    const [format, setFormat] = useState('1');
+    const [validFrom, setValidFrom] = useState('');
+    const [validTo, setValidTo] = useState('');
+    const [fromTime, setFromTime] = useState('10:00');
+    const [toTime, setToTime] = useState('11:00');
+
+
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [loading, setLoading] = useState(false);
-    const [exportedFile, setExportedFile] = useState(null);
 
     const timeoutRef = useRef(null);
 
@@ -126,106 +130,35 @@ const EmployeeAccessMaster = () => {
         }
     };
 
-    const handleExport = () => {
-        if (selectedRows.length === 0) {
-            setError('No employees selected');
-            return;
-        }
 
-        const dataToExport = EmployeeMasters.filter(emp => selectedRows.includes(emp.srno));
-        exportData(dataToExport);
-    };
-
-    const handleExportForAll = () => {
-        exportData(EmployeeMasters);
-    };
-
-    const exportData = (data) => {
-        if (format === '1') {
-            exportToPDF(data);
-        } else if (format === '2') {
-            exportToExcel(data);
-        }
-    };
-    const exportToPDF = (employees) => {
-        const doc = new jsPDF();
-        doc.text("Employee Access Master", 14, 16);
-        doc.text(`Date: ${new Date().toLocaleString()}`, 14, 24);
-
-        const tableColumn = ["Employee Code", "Name", "Card No.", "Company", "Location", "Department", "Sub-Dept"];
-        const tableRows = [];
-
-        employees.forEach(employee => {
-            const employeeData = [
-                employee.empcode,
-                employee.fname,
-                employee.cardno,
-                employee.compname,
-                employee.locationName,
-                employee.departmentName,
-                ""
-            ];
-            tableRows.push(employeeData);
+    useEffect(() => {
+        $('#validFrom').datepicker({
+            format: 'mm/dd/yyyy',
+            autoclose: true,
+        }).on('changeDate', function (e) {
+            setValidFrom(e.target.value);
         });
-        doc.autoTable({ head: [tableColumn], body: tableRows, startY: 32 });
-        const pdfOutput = doc.output('blob');
-        setExportedFile(new Blob([pdfOutput], { type: 'application/pdf' }));
-        saveAs(pdfOutput, 'EmployeeAccessMaster.pdf');
-        setSuccessMessage('PDF exported successfully');
+
+        $('#validTo').datepicker({
+            format: 'mm/dd/yyyy',
+            autoclose: true,
+        }).on('changeDate', function (e) {
+            setValidTo(e.target.value);
+        });
+
+    }, []);
+
+    const showDatePicker = (inputId) => {
+        $(`#${inputId}`).datepicker('show');
     };
 
-    const exportToExcel = (employees) => {
-        const worksheet = XLSX.utils.aoa_to_sheet([
-            ["Employee Access Master"], // Heading
-            [`Date: ${new Date().toLocaleString()}`], // Date/Time
-            [], 
-        ]);
-
-        XLSX.utils.sheet_add_json(worksheet, employees.map(employee => ({
-            "Employee Code": employee.empcode,
-            "Name": employee.fname,
-            "Card No.": employee.cardno,
-            "Company": employee.compname,
-            "Location": employee.locationName,
-            "Department": employee.departmentName,
-            "Sub-Dept": ""
-        })), { origin: 'A4', skipHeader: false });
-
-
-        worksheet['!merges'] = [
-            { s: { r: 0, c: 0 }, e: { r: 0, c: 6 } }, // Merge cells for heading
-            { s: { r: 1, c: 0 }, e: { r: 1, c: 6 } }, // Merge cells for date/time
-        ];
-
-
-        worksheet['A1'].s = { font: { bold: true, sz: 14 } }; // Heading
-        worksheet['A2'].s = { font: { bold: true, sz: 12 } }; // Date/Time
-
-        const workbook = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(workbook, worksheet, "Employee Access Master");
-
-        const excelOutput = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-        const blob = new Blob([excelOutput], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-        setExportedFile(blob);
-        saveAs(blob, 'EmployeeAccessMaster.xlsx');
-        setSuccessMessage('Excel exported successfully');
-    };
-
-    const handleView = () => {
-        if (exportedFile) {
-            const url = URL.createObjectURL(exportedFile);
-            window.open(url, '_blank');
-        } else {
-            setError('No file exported yet');
-        }
-    };
 
 
     return (
         <>
             <div className="container employeeContainer  mt-2 justify-content-center align-items-start">
                 <div className='card'>
-                    <h1 className="mb-4 ms-2">Employee Access Master</h1>
+                    <h1 className="mb-4 ms-2">Valid Gate Pass Report</h1>
                     <div className='container-fluid mb-4'>
                         <div className="row mb-4">
                             <div className="col-md-3 mb-2">
@@ -279,14 +212,46 @@ const EmployeeAccessMaster = () => {
                                 </select>
                             </div>
                             <div className="col-md-3 mb-2">
-                                <input type="checkbox" />
-                                <label className="form-label2">&nbsp;Contoller-Reader</label>
-
+                                <label htmlFor="type" className="form-label2">Type:</label>
+                                <select
+                                    className="form-control form-select border border-dark"
+                                    name="type"
+                                    disabled
+                                >
+                                    <option value="">Valid Gate Pass Report</option>
+                                </select>
                             </div>
                             <div className="col-md-3 mb-2">
-                                <input type="checkbox" />
-                                <label className="form-label2">&nbsp;Check All</label>
-
+                                <label>From:</label>
+                                <div className="input-group">
+                                    <input
+                                        type="text"
+                                        id="validFrom"
+                                        className="form-control border border-dark"
+                                        placeholder="Select date"
+                                        value={validFrom}
+                                        onChange={(e) => setValidFrom(e.target.value)}
+                                    />
+                                    <span className="input-group-text" onClick={() => showDatePicker('validFrom')}>
+                                        <FontAwesomeIcon icon={faCalendar} style={{ cursor: 'pointer' }} />
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="col-md-3 mb-2">
+                                <label>To:</label>
+                                <div className="input-group">
+                                    <input
+                                        type="text"
+                                        id="validTo"
+                                        className="form-control border border-dark"
+                                        placeholder="Select date"
+                                        value={validTo}
+                                        onChange={(e) => setValidTo(e.target.value)}
+                                    />
+                                    <span className="input-group-text" onClick={() => showDatePicker('validTo')}>
+                                        <FontAwesomeIcon icon={faCalendar} style={{ cursor: 'pointer' }} />
+                                    </span>
+                                </div>
                             </div>
                             <div className="col-md-3 mb-2">
                                 <label htmlFor="status" className="form-label2">Status:</label>
@@ -300,127 +265,6 @@ const EmployeeAccessMaster = () => {
                                     <option value="Deactive">Deactive</option>
                                 </select>
                             </div>
-                            
-                            <div className="col-md-3 mt-1">
-                                <button className="custom-btn secondary float-end">
-                                    <FontAwesomeIcon icon={faSync} />
-                                </button>
-                            </div>
-                        </div>
-                        <div className="row mb-4">
-                            <div className="table-responsive text-center" style={{ height: '200px', overflowX: 'auto' }}>
-                            <table className="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Select</th>
-                                        <th>Reader</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                            />
-                                        </td>
-                                        <td>
-                                            ACS Controller - Reader1
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                            />
-                                        </td>
-                                        <td>
-                                            ACS Controller - Reader2
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                            />
-                                        </td>
-                                        <td>
-                                            ACS Controller - Reader3
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                            />
-                                        </td>
-                                        <td>
-                                            ACS Controller - Reader4
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                            />
-                                        </td>
-                                        <td>
-                                            CONTROL ROOM IN - CONTROL ROOM IN
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                            />
-                                        </td>
-                                        <td>
-                                            CONTROL ROOM OUT - CONTROL ROOM OUT
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                            />
-                                        </td>
-                                        <td>
-                                            MAIN GATE IN - Driver Side
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                            />
-                                        </td>
-                                        <td>
-                                            MAIN GATE IN - Clener Side
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                            />
-                                        </td>
-                                        <td>
-                                            MAIN GATE OUT - Driver Side
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                            />
-                                        </td>
-                                        <td>
-                                            MAIN GATE OUT - Clener Side
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
                         </div>
                         <div className="row mb-4">
                             <div className="col-md-3 mb-2">
@@ -428,27 +272,50 @@ const EmployeeAccessMaster = () => {
                                 <select
                                     className="form-control form-select border border-dark"
                                     name="format"
-                                    value={format}
-                                    onChange={(e) => setFormat(e.target.value)}
                                 >
                                     <option value="1">PDF</option>
                                     <option value="2">Excel</option>
                                 </select>
                             </div>
+                            <div className="col-md-3 mb-2">
+                                <label>From Time:</label>
+                                <div className="input-group">
+                                    <input
+                                        type="time"
+                                        id="fromTime"
+                                        className="form-control border border-dark"
+                                        value={fromTime}
+                                        onChange={(e) => setFromTime(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                            <div className="col-md-3 mb-2">
+                                <label>To Time:</label>
+                                <div className="input-group">
+                                    <input
+                                        type="time"
+                                        id="toTime"
+                                        className="form-control border border-dark"
+                                        value={toTime}
+                                        onChange={(e) => setToTime(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                            <div className="col-md-3 mt-4">
+                                <button className="custom-btn secondary float-end">
+                                    <FontAwesomeIcon icon={faSync} />
+                                </button>
+                            </div>
                         </div>
+               
                         <div className="row mb-4 justify-content-center">
                             <div className="col-md-3 mb-2">
-                                <button className="btn btn-secondary w-80" onClick={handleView }>View</button>
+                                <button className="btn btn-secondary w-80">Export</button>
                             </div>
                             <div className="col-md-3 mb-2">
-                                <button className="btn btn-secondary w-80" onClick={handleExport}>Export</button>
-                            </div>
-                            <div className="col-md-3 mb-2">
-                                <button className="btn btn-secondary w-80" onClick={handleExportForAll}>Export For All</button>
+                                <button className="btn btn-secondary w-80">Export For All</button>
                             </div>
                         </div>
-                        {error && <div className="alert alert-danger" role="alert">{error}</div>}
-                        {successMessage && <div className="alert alert-success">{successMessage}</div>}
                         <div className="ms-4">
                             <p className="lead fw-bold">Count: <span className="text-danger">{EmployeeMasters.length}</span></p>
                         </div>
@@ -501,9 +368,9 @@ const EmployeeAccessMaster = () => {
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         </>
     );
 };
 
-export default EmployeeAccessMaster;
+export default ValidGatePassReport;

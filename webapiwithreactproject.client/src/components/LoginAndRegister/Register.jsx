@@ -46,8 +46,33 @@ const Register = () => {
 
         const { uname, email, dept, phno, pass } = AdminData;
 
-        if (!uname || !email || !dept || !phno || !pass || !cpass) {
+        if (!uname && !email && !dept && !phno && !pass && !cpass) {
             setError('Fields cannot be empty');
+            return;
+        }
+
+        if (!uname) {
+            setError('Username cannot be empty');
+            return;
+        }
+
+        if (!email) {
+            setError('Email cannot be empty');
+            return;
+        }
+
+        if (!phno) {
+            setError('Phone number cannot be empty');
+            return;
+        }
+
+        if (!pass) {
+            setError('Password cannot be empty');
+            return;
+        }
+
+        if (!cpass) {
+            setError('Confirm Password cannot be empty');
             return;
         }
 
@@ -127,7 +152,7 @@ const Register = () => {
                         <div className="right-side">
                             <div className="register">
                                 <p>
-                                    Already a member? <Link to="/">Sign In</Link>
+                                    Already a User? <Link to="/">Sign In</Link>
                                 </p>
                             </div>
 

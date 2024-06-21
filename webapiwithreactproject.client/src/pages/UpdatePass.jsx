@@ -46,8 +46,13 @@ const ChangePasswordPage = () => {
             return;
         }
 
-        if (!password || !confirmPassword) {
-            setError('This field cannot be empty');
+        if (!password && !confirmPassword) {
+            setError('Fields cannot be empty');
+            return;
+        }
+
+        if (!password) {
+            setError('Password cannot be empty');
             return;
         }
 

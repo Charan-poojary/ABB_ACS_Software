@@ -95,7 +95,7 @@ const StateMaster = () => {
                     throw new Error('Network response was not ok');
                 }
 
-                setSuccessMessage('New Location added successfully');
+                setSuccessMessage('New State added successfully');
                 setNewStateMaster({
                     srno: '',
                     statename: '',
@@ -154,17 +154,6 @@ const StateMaster = () => {
         }
 
         try {
-            const checkResponse = await fetch(`http://localhost:5213/api/States/CheckStates/${editedStateMaster.statename}`);
-            if (!checkResponse.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const checkData = await checkResponse.json();
-            if (checkData.exists) {
-                setError('State already exists.');
-                return;
-
-            }
-            else {
 
                 const response = await fetch(`http://localhost:5213/api/States/${editedStateMaster.srno}`, {
                     method: 'PUT',
@@ -186,7 +175,6 @@ const StateMaster = () => {
                     srno: '',
                     statename: ''
                 });
-            }
             setTimeout(() => {
                 const editModalElement1 = document.getElementById('editModal');
                 const editModalInstance1 = bootstrap.Modal.getInstance(editModalElement1);

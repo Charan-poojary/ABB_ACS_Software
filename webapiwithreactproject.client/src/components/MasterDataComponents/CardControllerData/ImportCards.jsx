@@ -24,6 +24,17 @@ const ImportCards = () => {
         console.log('Export clicked');
     };
 
+    const getFileIcon = (file) => {
+        const fileType = file.name.split('.').pop();
+        if (fileType === 'pdf') {
+            return <i className="bi bi-file-earmark-pdf" style={{ fontSize: '2rem', marginRight: '1rem' }}></i>;
+        } else if (fileType === 'xlsx' || fileType === 'xls') {
+            return <i className="bi bi-file-earmark-excel" style={{ fontSize: '2rem', marginRight: '1rem' }}></i>;
+        } else {
+            return <i className="bi bi-file-earmark" style={{ fontSize: '2rem', marginRight: '1rem' }}></i>;
+        }
+    };
+
     return (
         <>
             <div className="container employeeContainer mt-2 justify-content-center align-items-start">
@@ -42,6 +53,7 @@ const ImportCards = () => {
                                     type="file"
                                     accept=".xlsx, .xls, .pdf"
                                     className="form-control border border-dark"
+                                    onChange={handleFileChange}
                                 />
                             </div>
                             <div className="col-md-4 mb-2">
@@ -49,16 +61,29 @@ const ImportCards = () => {
                                 <input
                                     type="text"
                                     className="form-control border border-dark"
+                                    value={sheetName}
+                                    onChange={handleSheetNameChange}
                                 />
                             </div>
                         </div>
 
                         <div className="row">
                             <div className="col-md-12 d-flex justify-content-end">
-                                <button className="btn btn-primary me-2">Save</button>
-                                <button className="btn btn-secondary">Export</button>
+                                <button className="btn btn-primary me-2" onClick={handleSave}>Save</button>
+                                <button className="btn btn-secondary" onClick={handleExport}>Export</button>
                             </div>
                         </div>
+
+                        {selectedFile && (
+                            <div className="row mt-4">
+                                <div className="col-md-12 d-flex align-items-center">
+                                    {getFileIcon(selectedFile)}
+                                    <a href={URL.createObjectURL(selectedFile)} target="_blank" rel="noopener noreferrer">
+                                        {selectedFile.name}
+                                    </a>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

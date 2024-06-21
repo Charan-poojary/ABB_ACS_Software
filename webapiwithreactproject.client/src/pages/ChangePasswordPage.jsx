@@ -43,8 +43,18 @@ const ChangePasswordPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!password || !confirmPassword) {
-            setError('This field cannot be empty');
+        if (!password && !confirmPassword) {
+            setError('Fields cannot be empty');
+            return;
+        }
+
+        if (!password) {
+            setError('Password cannot be empty');
+            return;
+        }
+
+        if (!confirmPassword) {
+            setError('Confirm Password cannot be empty');
             return;
         }
 

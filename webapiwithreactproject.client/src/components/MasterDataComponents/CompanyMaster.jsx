@@ -15,7 +15,6 @@ const CompanyMaster = () => {
         emailid: ''
     });
     const [newCompanyMaster, setNewCompanyMaster] = useState({
-        srno: '',
         compname: '',
         details: '',
         phno: '',
@@ -69,7 +68,7 @@ const CompanyMaster = () => {
 
 
         if (!newCompanyMaster.compname) {
-            setError("Fields cannot be empty");
+            setError("Company Name cannot be empty");
             return;
         }
 
@@ -87,29 +86,22 @@ const CompanyMaster = () => {
         }
 
         try {
-
-            // Check if company name exists
             const checkResponse = await fetch(`http://localhost:5213/api/CompanyMasters/CheckCompanyName/${newCompanyMaster.compname}`);
             if (!checkResponse.ok) {
                 throw new Error('Network response was not ok');
+               
             }
             const checkData = await checkResponse.json();
             if (checkData.exists) {
                 setError('Company name already exists.');
                 return;
             }
-            else {
                 const response = await fetch('http://localhost:5213/api/CompanyMasters', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        compname: newCompanyMaster.compname,
-                        details: newCompanyMaster.details, 
-                        phno: newCompanyMaster.phno,
-                        emailid: newCompanyMaster.emailid
-                    }),
+                    body: JSON.stringify(newCompanyMaster),
                 });
 
                 if (!response.ok) {
@@ -117,13 +109,13 @@ const CompanyMaster = () => {
                 }
 
                 setSuccessMessage('New company added successfully');
+
                 setNewCompanyMaster({
                     compname: '',
                     details: '',
                     phno: '',
                     emailid: ''
                 });
-            }
             setTimeout(() => {
                 const addModalElement1 = document.getElementById('addModal');
                 const addModalInstance1 = bootstrap.Modal.getInstance(addModalElement1);
@@ -150,7 +142,6 @@ const CompanyMaster = () => {
         });
 
         setNewCompanyMaster({
-            srno: '',
             compname: '',
             details: '',
             phno: '',
@@ -185,7 +176,7 @@ const CompanyMaster = () => {
 
 
         if (!editedCompanyMaster.compname) {
-            setError("Fields cannot be empty");
+            setError("Company Name cannot be empty");
             return;
         }
 
@@ -204,17 +195,17 @@ const CompanyMaster = () => {
 
 
         try {
-            // Check if company name exists
-            const checkResponse = await fetch(`http://localhost:5213/api/CompanyMasters/CheckCompanyName/${editedCompanyMaster.compname}`);
+
+            const checkResponse = await fetch(`http://localhost:5213/api/CompanyMasters/CheckCompanyName/${newCompanyMaster.compname}`);
             if (!checkResponse.ok) {
                 throw new Error('Network response was not ok');
+
             }
             const checkData = await checkResponse.json();
             if (checkData.exists) {
                 setError('Company name already exists.');
                 return;
             }
-            else {
                 const response = await fetch(`http://localhost:5213/api/CompanyMasters/${editedCompanyMaster.srno}`, {
                     method: 'PUT',
                     headers: {
@@ -235,7 +226,6 @@ const CompanyMaster = () => {
                     phno: '',
                     emailid: ''
                 });
-            }
             setTimeout(() => {
                 const editModalElement1 = document.getElementById('editModal');
                 const editModalInstance1 = bootstrap.Modal.getInstance(editModalElement1);
@@ -434,12 +424,12 @@ const CompanyMaster = () => {
                     <input type="text" className="form-control2" id="editDetailes" name="details" value={newCompanyMaster.details} onChange={handleAddInputChange} />
                 </div>
                 <div className="input_text">
-                    <label htmlFor="editPhone" className="form-label2">Phone</label>
-                    <input type="text" className="form-control2" id="editPhone" name="phno" value={newCompanyMaster.phno} onChange={handleAddInputChange} />
+                    <label htmlFor="phno" className="form-label2">Phone</label>
+                    <input type="number" className="form-control2" id="phno" name="phno" value={newCompanyMaster.phno} onChange={handleAddInputChange} />
                 </div>
                 <div className="input_text">
-                    <label htmlFor="editEmail" className="form-label2">Email</label>
-                    <input type="text" className="form-control2" id="editEmail" name="emailid" value={newCompanyMaster.emailid} onChange={handleAddInputChange} />
+                    <label htmlFor="emailid" className="form-label2">Email</label>
+                    <input type="email" className="form-control2" id="emailid" name="emailid" value={newCompanyMaster.emailid} onChange={handleAddInputChange} />
                 </div>
             </div>
             <div className="modal-footer">
@@ -474,11 +464,11 @@ const CompanyMaster = () => {
                 </div>
                 <div className="input_text">
                     <label htmlFor="editPhone" className="form-label2">Phone</label>
-                    <input type="text" className="form-control2" id="editPhone" name="phno" value={editedCompanyMaster.phno} onChange={handleInputChange} />
+                    <input type="number" className="form-control2" id="editPhone" name="phno" value={editedCompanyMaster.phno} onChange={handleInputChange} />
                 </div>
                 <div className="input_text">
                     <label htmlFor="editEmail" className="form-label2">Email</label>
-                    <input type="text" className="form-control2" id="editEmail" name="emailid" value={editedCompanyMaster.emailid} onChange={handleInputChange} />
+                    <input type="email" className="form-control2" id="editEmail" name="emailid" value={editedCompanyMaster.emailid} onChange={handleInputChange} />
                 </div>
             </div>
             <div className="modal-footer">

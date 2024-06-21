@@ -22,6 +22,14 @@ import GateWiseReport from './GateWiseReport';
 import ManPowerReport from './ManPowerReport';
 import MonthlyManpowerReport from './MonthlyManpowerReport';
 import PinBypassReport from './PinBypassReport';
+import PictureTransactionsReport from './PictureTransactionsReport';
+import StateReport from './StateReport';
+import VehicleAccessEvent from './VehicleAccessEvent';
+import VehicleMasterReport from './VehicleMasterReport';
+import ValidGatePassReport from './ValidGatePassReport';
+import DoorAccessReport from './DoorAccessReport';
+import DriverHelperReport from './DriverHelperReport';
+import DriverHelperUnregisterationReport from './DriverHelperUnregisterationReport';
 
 
 
@@ -281,14 +289,14 @@ const Reports = ({ defaultLink }) => {
                                     {selectedLink === 'link18' && <ManPowerReport />}
                                     {selectedLink === 'link19' && <MonthlyManpowerReport />}
                                     {selectedLink === 'link20' && <PinBypassReport />}
-                                    {selectedLink === 'link21' && <EmployeeAccessMaster />}
-                                    {selectedLink === 'link22' && <CompanyWiseReport />}
-                                    {selectedLink === 'link23' && <AccessGranted />}
-                                    {selectedLink === 'link24' && <ContractorWiseReport />}
-                                    {selectedLink === 'link25' && <AccessDenied />}
-                                    {selectedLink === 'link26' && <AuditLog />}
-                                    {selectedLink === 'link27' && <CategoryWiseReport />}
-                                    {selectedLink === 'link28' && <AccessTransactions />}
+                                    {selectedLink === 'link21' && <PictureTransactionsReport />}
+                                    {selectedLink === 'link22' && <StateReport />}
+                                    {selectedLink === 'link23' && <VehicleAccessEvent />}
+                                    {selectedLink === 'link24' && <VehicleMasterReport />}
+                                    {selectedLink === 'link25' && <ValidGatePassReport />}
+                                    {selectedLink === 'link26' && <DoorAccessReport />}
+                                    {selectedLink === 'link27' && <DriverHelperReport />}
+                                    {selectedLink === 'link28' && <DriverHelperUnregisterationReport />}
                                 </div>
                             </div>
                         </div>

@@ -160,18 +160,6 @@ const LocationMaster = () => {
 
         try {
 
-            // Check if location exists
-            const checkResponse = await fetch(`http://localhost:5213/api/Locations/CheckLocations/${editedLocationMaster.locationid}`);
-            if (!checkResponse.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const checkData = await checkResponse.json();
-            if (checkData.exists) {
-                setError('Location already exists.');
-                return;
-
-            }
-            else {
                 const response = await fetch(`http://localhost:5213/api/Locations/${editedLocationMaster.srno}`, {
                     method: 'PUT',
                     headers: {
@@ -194,7 +182,6 @@ const LocationMaster = () => {
                     locationid: '',
                     details: ''
                 });
-            }
 
             setTimeout(() => {
                 const editModalElement1 = document.getElementById('editModal');
